@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Space-Grotesk";
+  src: url("../fonts/SpaceGrotesk[wght].ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --spacing: 1px;
+
+  /* Global container gutter */
+  --spacing-gutter: clamp(1.25rem, -0.6071rem + 7.619vw, 6.25rem);
+
+  /* Small section spacing */
+  --spacing-sec: clamp(2.5rem, 0.1786rem + 9.5238vw, 8.75rem);
+
+  /* Large section spacing */
+  --spacing-sec-lg: clamp(7.5rem, 6.4339rem + 4.0134vw, 11.25rem);
+
+  --breakpoint-*: initial;
+  --container-*: initial;
+
+  /* Extra Small Devices */
+  --breakpoint-xsm: 450px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+  --breakpoint-3xl: 1500px;
+  --breakpoint-4xl: 1600px;
+
+  --color-primary: #011120;
+  --color-secondary: #89ff20;
+  --color-grey: #80888f;
+
+  --font-grotesk: "Space-Grotesk";
+
+  /* ========================================
+       BODY TEXT
+    ======================================== */
+
+  /* Responsive Body Font Size */
+  --text-body: clamp(0.9375rem, 0.8842rem + 0.2007vw, 1.125rem);
+  /* Responsive Body Line Height */
+  --text-body--line-height: clamp(1.5rem, 1.4112rem + 0.3344vw, 1.8125rem);
+
+  --text-h1: clamp(2rem, 1.3036rem + 2.8571vw, 3.875rem);
+  /* H1 Line Height */
+  --text-h1--line-height: clamp(3rem, 2.467rem + 2.0067vw, 4.875rem);
+
+  --text-h2: clamp(2rem, 1.5821rem + 1.7143vw, 3.125rem);
+  --text-h3: clamp(1rem, 0.9071rem + 0.381vw, 1.25rem);
+  --text-18: 18px;
+}
+
+@layer base {
+  html {
+    @apply mx-auto scroll-smooth;
+  }
+  body {
+    @apply font-grotesk wrap-break-word hyphens-auto;
+  }
+  * {
+    @apply scrollbar-thin scrollbar-thumb-white scrollbar-track-black;
+  }
+  :is(h1, h2, h3, h4, h5, h6) {
+    @apply font-sans;
+    /* word-spacing: -30%; */
+  }
+  button {
+    @apply cursor-pointer;
+  }
+  .container {
+    @apply mx-auto px-gutter;
+  }
+  .ctm_sec {
+    @apply relative z-1;
+  }
+  .text-h3-highlight :is(b, strong, span),
+  .text-h4-highlight :is(b, strong, span) {
+    @apply font-semibold;
+  }
+  .col {
+    @apply flex flex-col gap-30 2xl:gap-50;
+  }
+  .row {
+    @apply grid gap-30 xl:gap-50;
+  }
+
+  .cols_1_1 {
+    @apply lg:grid-cols-2;
+  }
+
+  .cols_1_2,
+  .cols_2_1 {
+    @apply lg:grid-cols-3;
+  }
+
+  .cols_1_2 .col:last-child,
+  .cols_2_1 .col:first-child {
+    @apply lg:col-span-2;
+  }
+  .free_text {
+    @apply flex flex-col gap-20 font-grotesk;
+  }
+
+  h1 {
+    @apply text-h1 font-grotesk;
+  }
+  h2 {
+    @apply text-h2 font-grotesk;
+  }
+  h3 {
+    @apply text-h3 font-grotesk;
+  }
+  h4 {
+    @apply text-18 font-grotesk font-medium;
+  }
+
+  .link li {
+    @apply hover:underline transition-slow cursor-pointer;
+  }
+  .highlight-text {
+    @apply text-secondary font-semibold;
+  }
+  .paragraph {
+    @apply md:px-58 text-h3;
+  }
+  .paragraph_box {
+    @apply max-w-555;
+  }
+  .paragraph_box_lg {
+    @apply max-w-900;
+  }
+  input {
+    @apply text-primary px-20 py-14 text-sm leading-24;
+  }
+}
+@utility transition-slow {
+  transition: all 0.3s ease;
+}
+
+@utility btn {
+  @apply inline-block text-center py-10 px-20 text-sm font-semibold
+         transition-slow border-[0.5px] w-full md:w-fit
+         md:skew-x-[-10deg];
+}
+@utility btn-transparent {
+  @apply inline-block text-center py-6 px-20 text-sm font-semibold
+         transition-slow border-[0.5px] w-full md:w-fit border-secondary text-secondary hover:text-primary hover:bg-secondary;
+}
+@utility btn-text {
+  @apply block skew-x-[10deg];
+}
+
+@utility btn-primary {
+  @apply bg-secondary text-primary hover:text-secondary hover:bg-transparent border-2 border-secondary hover:border-secondary;
+}
+
+@utility btn-secondary {
+  @apply bg-primary text-white hover:text-primary hover:bg-transparent;
+}
