@@ -12,41 +12,538 @@
     />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-    <!-- <script defer src="assets/js/alpine.js"></script> -->
+    <script defer src="assets/js/alpine.js"></script>
 
     <link rel="stylesheet" href="assets/css/style.css" />
+
     <title>Tensoris</title>
   </head>
+  <style>
+    /* Wipes straight lines DOWN to height 0 */
+    .straight-lines {
+      clip-path: inset(0 0 0 0);
+      transition: clip-path 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .straight-lines.active {
+      clip-path: inset(100% 0 0 0); /* Shrinks height to 0 from top to bottom */
+    }
+
+    /* Wipes inclined lines IN from top to bottom at the exact same time */
+    .inclined-lines {
+      clip-path: inset(0 0 100% 0); /* Starts at height 0 */
+      transition: clip-path 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .inclined-lines.active {
+      clip-path: inset(0 0 0 0); /* Grows to full height */
+    }
+  </style>
   <body>
-    <header class="bg-primary text-white">
-      <div class="container flex items-center justify-between md:px-50 py-28 lg:py-20">
-        <a href="/" aria-label="KONTUR 27" class="shrink-0">
-          <img src="assets/icons/Logo.svg" alt="KONTUR 27" class="w-100 md:w-auto" />
+    <header
+      x-data="{ mobileMenu: false }"
+      class="bg-primary text-white relative z-50"
+    >
+      <div
+        x-data="{menu: null }"
+        class="container flex items-center justify-between md:px-50 py-28 lg:py-20"
+      >
+        <a href="/" aria-label="TENSORIS" class="shrink-0">
+          <img
+            src="assets/icons/Logo.svg"
+            alt="TENSORIS"
+            class="w-100 md:w-auto"
+          />
         </a>
         <div class="flex items-center gap-60">
-          <nav class="hidden lg:flex grow overflow-x-auto scrollbar-none">
-            <ul class="flex gap-25 2xl:gap-50 font-tabular justify-end">
-              <li>
-                <a href="#"> Transformation </a>
+          <nav class="hidden xl:flex">
+            <!-- <ul class="flex gap-25 2xl:gap-45 font-tabular justify-end my-26 relative"> -->
+            <ul class="flex gap-25 2xl:gap-45 font-tabular justify-end">
+              <!-- Item 1: Transformation -->
+              <li
+                x-data="{ open: false }"
+                @mouseenter="open = true"
+                @mouseleave="open = false"
+                class="relative"
+              >
+                <a
+                  href="#"
+                  class="flex items-center gap-2 transition-colors duration-200"
+                  :class="open ? 'text-secondary' : 'hover:text-secondary'"
+                >
+                  <span>Transformation</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </a>
+
+                <!-- Invisible bridge wrapper using pt-4 so hover area is never lost -->
+                <div
+                  x-show="open"
+                  x-transition
+                  class="absolute top-full right-0 pt-24 w-300 z-50"
+                >
+                  <div
+                    class="bg-primary text-white shadow-2xl font-light *:px-20 *:py-12"
+                  >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/10 hover:text-secondary transition-colors"
+                      >Strategy</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/10 hover:text-secondary transition-colors"
+                      >Execution</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/10 hover:text-secondary transition-colors"
+                      >Enablement</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 hover:text-secondary transition-colors"
+                      >Assurance</a
+                    >
+                  </div>
+                </div>
               </li>
-              <li>
-                <a href="#"> Technologie </a>
+
+              <!-- Item 2: Technologie -->
+              <li
+                x-data="{ open: false }"
+                @mouseenter="open = true"
+                @mouseleave="open = false"
+                class="relative"
+              >
+                <a
+                  href="#"
+                  class="flex items-center gap-2 transition-colors duration-200"
+                  :class="open ? 'text-secondary' : 'hover:text-secondary'"
+                >
+                  <span>Technologie</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </a>
+
+                <!-- Invisible bridge wrapper using pt-4 -->
+                <div
+                  x-show="open"
+                  x-transition
+                  class="absolute top-full right-0 pt-24 w-300 z-50"
+                >
+                  <div
+                    class="bg-primary text-white shadow-2xl font-light *:px-20 *:py-12"
+                  >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/10 hover:text-secondary transition-colors"
+                      >Cloud & Plattformen</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/10 hover:text-secondary transition-colors"
+                      >Architektur</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/10 hover:text-secondary transition-colors"
+                      >DevOps & Delivery</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/10 hover:text-secondary transition-colors"
+                      >KI & Secure KI</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 hover:text-secondary transition-colors"
+                      >IT Sicherheit</a
+                    >
+                  </div>
+                </div>
               </li>
+
+              <!-- Item 3: Cases -->
               <li>
-                <a href="#"> Cases </a>
+                <a
+                  href="#"
+                  class="hover:text-secondary transition-colors duration-200"
+                >
+                  Cases
+                </a>
               </li>
-              <li>
-                <a href="faq.html"> Insight </a>
+
+              <!-- Item 4: Insight -->
+              <li
+                x-data="{ open: false }"
+                @mouseenter="open = true"
+                @mouseleave="open = false"
+                class="relative"
+              >
+                <a
+                  href="faq.html"
+                  class="flex items-center gap-2 transition-colors duration-200"
+                  :class="open ? 'text-secondary' : 'hover:text-secondary'"
+                >
+                  <span>Insight</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </a>
+
+                <!-- Invisible bridge wrapper using pt-4 -->
+                <div
+                  x-show="open"
+                  x-transition
+                  class="absolute top-full right-0 pt-24 w-300 z-50"
+                >
+                  <div
+                    class="bg-primary text-white font-light shadow-2xl *:px-20 *:py-12"
+                  >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/10 hover:text-secondary transition-colors"
+                      >Articles</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/10 hover:text-secondary transition-colors"
+                      >Perspectives</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/10 hover:text-secondary transition-colors"
+                      >Reports</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 hover:text-secondary transition-colors"
+                      >Events</a
+                    >
+                  </div>
+                </div>
               </li>
-              <li>
-                <a href="faq.html"> Über TENSORIS </a>
+
+              <!-- Item 5: Über TENSORIS -->
+              <li
+                x-data="{ open: false }"
+                @mouseenter="open = true"
+                @mouseleave="open = false"
+                class="relative"
+              >
+                <a
+                  href="faq.html"
+                  class="flex items-center gap-2 transition-colors duration-200"
+                  :class="open ? 'text-secondary' : 'hover:text-secondary'"
+                >
+                  <span>Über TENSORIS</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </a>
+
+                <!-- Invisible bridge wrapper using pt-4 -->
+                <div
+                  x-show="open"
+                  x-transition
+                  class="absolute top-full right-0 pt-24 w-300 z-50"
+                >
+                  <div
+                    class="bg-primary text-white font-light shadow-2xl *:px-20 *:py-12"
+                  >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/10 hover:text-secondary transition-colors"
+                      >Haltung</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/10 hover:text-secondary transition-colors"
+                      >Team</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 hover:text-secondary transition-colors"
+                      >Karriere</a
+                    >
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>
-          <button class="btn-transparent hidden md:block">Kontakt</button>
+          <button class="btn-transparent hidden xl:block">Kontakt</button>
+          <!-- Mobile Button -->
+          <button
+            @click="mobileMenu = !mobileMenu"
+            class="flex justify-center xl:hidden focus:outline-none w-[26px] h-[24px]"
+            aria-label="Toggle Menu"
+          >
+            <svg
+              width="22"
+              height="24"
+              viewBox="0 0 22 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <style>
+                .straight-lines {
+                  clip-path: inset(0 0 0 0);
+                  transition: clip-path 350ms cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                .straight-lines.active {
+                  clip-path: inset(100% 0 0 0);
+                }
+                .inclined-lines {
+                  clip-path: inset(0 0 100% 0);
+                  transition: clip-path 350ms cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                .inclined-lines.active {
+                  clip-path: inset(0 0 0 0);
+                }
+              </style>
+
+              <g class="straight-lines" :class="{ 'active': mobileMenu }">
+                <path d="M0 24L3.11362 0H5.99361L2.88 24H0Z" fill="#89FF20" />
+                <path
+                  d="M7.75781 24L10.8714 0H13.7514L10.6378 24H7.75781Z"
+                  fill="#89FF20"
+                />
+                <path
+                  d="M15.5078 24L18.6214 0H21.5014L18.3878 24H15.5078Z"
+                  fill="#89FF20"
+                />
+              </g>
+
+              <g class="inclined-lines" :class="{ 'active': mobileMenu }">
+                <path d="M0 24L15.114 0H17.994L2.88 24H0Z" fill="#89FF20" transform="translate(2,0)"/>
+                <g fill="#89FF20" >
+                  <path d="M13.992 24L2.8786 0H0L11.112 24H13.992Z" />
+                  <path
+                    d="M13.992 24L2.8786 0H0L11.112 24H13.992Z"
+                    transform="translate(7,0)"
+                  />
+                </g>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Dropdown Menu -->
+      <div
+        x-show="mobileMenu"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="-translate-y-full opacity-0"
+        x-transition:enter-end="translate-y-0 opacity-100"
+        x-transition:leave="transition-slow"
+        x-transition:leave-start="translate-y-0 opacity-100"
+        x-transition:leave-end="-translate-y-full opacity-0"
+        class="absolute top-full left-0 w-full bg-primary z-40"
+      >
+        <div x-data="{ active: null }" class="container">
+          <div class="border-b border-white/20">
+            <button
+              @click="active = active === 1 ? null : 1"
+              class="flex justify-between w-full py-12"
+              :class="active === 1 ? 'text-secondary' : 'text-white'"
+            >
+              <span>Transformation</span>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="transition-transform duration-300"
+                :class="active === 1 ? 'rotate-180' : ''"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            <div
+              class="overflow-hidden transition-all duration-500 ease-in-out"
+              :class="active === 1
+            ? 'max-h-200 opacity-100 translate-y-0'
+            : 'max-h-0 opacity-0 -translate-y-2'"
+            >
+              <div class="pb-8 flex flex-col">
+                <a href="#" class="py-4 text-sm font-light">Strategy</a>
+                <a href="#" class="py-4 text-sm font-light">Execution</a>
+                <a href="#" class="py-4 text-sm font-light">Enablement</a>
+                <a href="#" class="py-4 text-sm font-light">Assurance</a>
+              </div>
+            </div>
+          </div>
+          <div class="border-b border-white/20">
+            <button
+              @click="active = active === 2 ? null : 2"
+              class="flex justify-between w-full py-12"
+              :class="active === 2 ? 'text-secondary' : 'text-white'"
+            >
+              <span>Technologie</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="transition-transform duration-300"
+                :class="active === 2 ? 'rotate-180' : ''"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            <div
+              class="overflow-hidden transition-all duration-500 ease-in-out"
+              :class="active === 2
+            ? 'max-h-200 opacity-100 translate-y-0'
+            : 'max-h-0 opacity-0 -translate-y-2'"
+            >
+              <a href="#" class="block py-4 text-sm font-light"
+                >Cloud & Plattformen</a
+              >
+              <a href="#" class="block py-4 text-sm font-light">Architektur</a>
+              <a href="#" class="block py-4 text-sm font-light"
+                >DevOps & Delivery</a
+              >
+              <a href="#" class="block py-4 text-sm font-light"
+                >KI & Secure KI</a
+              >
+              <a href="#" class="block py-4 text-sm font-light"
+                >IT Sicherheit</a
+              >
+            </div>
+          </div>
+
+          <a href="#" class="block py-12 border-b border-white/20">Cases</a>
+          <div class="border-b border-white/20">
+            <button
+              @click="active = active === 3 ? null : 3"
+              class="flex justify-between w-full py-12"
+              :class="active === 3 ? 'text-secondary' : 'text-white'"
+            >
+              <span>Insight</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="transition-transform duration-300"
+                :class="active === 3 ? 'rotate-180' : ''"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            <div
+              class="overflow-hidden transition-all duration-500 ease-in-out"
+              :class="active === 3
+            ? 'max-h-200 opacity-100 translate-y-0'
+            : 'max-h-0 opacity-0 -translate-y-2'"
+            >
+              <a href="#" class="block py-4 text-sm font-light">Articles</a>
+              <a href="#" class="block py-4 text-sm font-light">Perspectives</a>
+              <a href="#" class="block py-4 text-sm font-light">Reports</a>
+              <a href="#" class="block py-4 text-sm font-light">Events</a>
+            </div>
+          </div>
+          <div class="border-b border-white/20">
+            <button
+              @click="active = active === 4 ? null : 4"
+              class="flex justify-between w-full py-12"
+              :class="active === 4 ? 'text-secondary' : 'text-white'"
+            >
+              <span>Über TENSORIS</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="transition-transform duration-300"
+                :class="active === 4 ? 'rotate-180' : ''"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            <div
+              class="overflow-hidden transition-all duration-500 ease-in-out"
+              :class="active === 4
+            ? 'max-h-200 opacity-100 translate-y-0'
+            : 'max-h-0 opacity-0 -translate-y-2'"
+            >
+              <a href="#" class="block py-4 text-sm font-light">Haltung</a>
+              <a href="#" class="block py-4 text-sm font-light">Team</a>
+              <a href="#" class="block py-4 text-sm font-light">Karriere</a>
+            </div>
+          </div>
+
+          <button class="btn-transparent my-25 w-fit">Kontakt</button>
         </div>
       </div>
     </header>
+
     <main>
       <section>
         <div class="Header relative h-screen max-h-800 py-sec">
@@ -307,104 +804,123 @@
       </section>
     </main>
     <footer>
-      <div class="pt-sec bg-primary text-white">
+      <div class="pt-sec bg-primary text-white text-sm">
         <div class="container">
-          <div class="pb-72">
-            <img src="assets/icons/Logo.svg" alt="" />
-          </div>
-          <div class="row cols_1_1 border-b pb-sec border-white/20">
-            <div class="col">
-              <div>
-                <p class="highlight-text">Tensoris GmbH & Co. KG</p>
-                <p class="max-w-[95%]">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                  justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                  sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                  nonumy eirmod tempor invidunt ut.
+          <div class="col">
+            <div class="mb-10 md:mb-22">
+              <img src="assets/icons/Logo.svg" alt="" />
+            </div>
+            <div class="row cols_1_1 gap-y-70 pb-55">
+              <div class="col">
+                <div>
+                  <p class="highlight-text hidden md:block">
+                    Tensoris GmbH & Co. KG
+                  </p>
+                  <p class="max-w-[95%]">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+                    sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
+                    ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                    nonumy eirmod tempor invidunt ut.
+                  </p>
+                </div>
+                <p>
+                  Tensoris GmbH & Co. KG. <br />Musterstraße 567 <br />45127
+                  Essen
                 </p>
+                <div class="flex flex-col">
+                  <a href="">Telefon: +49 (0)201 82024-0 </a>
+                  <a href="">Telefax: +49 (0)201 82024-92 </a>
+                  <a href="">E-Mail: info@tensoris.tech</a>
+                </div>
               </div>
-              <p>
-                Tensoris GmbH & Co. KG. <br />Musterstraße 567 <br />45127 Essen
-              </p>
-              <div class="flex flex-col">
-                <a href="">Telefon: +49 (0)201 82024-0 </a>
-                <a href="">Telefax: +49 (0)201 82024-92 </a>
-                <a href="">E-Mail: info@tensoris.tech</a>
+              <div class="row grid md:grid-cols-2 gap-y-0">
+                <div class="md:col">
+                  <div class="pb-20 border-b border-white/20 space-y-8">
+                    <p class="highlight-text">Transformation</p>
+                    <ul class="space-y-8 link">
+                      <li>Strategy</li>
+                      <li>Execution</li>
+                      <li>Enablement</li>
+                      <li>Assurance</li>
+                    </ul>
+                  </div>
+                  <div class="py-20 border-b border-white/20 space-y-8">
+                    <p class="highlight-text">Technologie</p>
+                    <ul class="space-y-8 link">
+                      <li>Cloud & Platforms</li>
+                      <li>Architecture</li>
+                      <li>DevOps & Delivery</li>
+                      <li>AI & Secure AI</li>
+                      <li>Security</li>
+                    </ul>
+                  </div>
+                  <p class="highlight-text py-20">Cases</p>
+                </div>
+                <div class="md:col">
+                  <div
+                    class="pt-20 md:pt-0 pb-20 border-y md:border-t-0 border-white/20 space-y-8"
+                  >
+                    <p class="highlight-text">Insights</p>
+                    <ul class="space-y-8 link">
+                      <li>Articles</li>
+                      <li>Perspectives</li>
+                      <li>Reports</li>
+                      <li>Events</li>
+                    </ul>
+                  </div>
+                  <div class="py-20 border-b border-white/20 space-y-8">
+                    <p class="highlight-text">Über TENSORIS</p>
+                    <ul class="space-y-8 link">
+                      <li>Kernversprechen</li>
+                      <li>Warum wir?</li>
+                      <li>Team</li>
+                    </ul>
+                  </div>
+                  <div
+                    class="py-20 border-b md:border-0 border-white/20 space-y-5"
+                  >
+                    <div class="space-y-8">
+                      <p class="highlight-text">News</p>
+                      <p class="highlight-text">Kontakt</p>
+                    </div>
+                  </div>
+                  <div class="py-20 space-y-5 md:hidden">
+                    <div class="space-y-8">
+                      <p class="font-semibold">Impressum</p>
+                      <p class="font-semibold">Datenschutz</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="row grid md:grid-cols-2">
-              <div class="col">
-                <div class="pb-20 border-b border-white/20 space-y-5">
-                  <p class="highlight-text">Transformation</p>
-                  <ul class="space-y-4 link">
-                    <li>Strategy</li>
-                    <li>Execution</li>
-                    <li>Enablement</li>
-                    <li>Assurance</li>
-                  </ul>
+            <div
+              class="flex justify-between pt-28 pb-16 md:pb-44 lg:pb-60 items-center border-t border-white/20"
+            >
+              <div>© 2026 Tensoris GmbH & Co. KG</div>
+              <div class="flex gap-50">
+                <div class="space-x-35 hidden md:block">
+                  <span class="font-semibold">Impressum</span>
+                  <span class="font-semibold">Datenschutz</span>
                 </div>
-                <div class="pb-20 border-b border-white/20 space-y-5">
-                  <p class="highlight-text">Technologie</p>
-                  <ul class="space-y-4 link">
-                    <li>Cloud & Platforms</li>
-                    <li>Architecture</li>
-                    <li>DevOps & Delivery</li>
-                    <li>AI & Secure AI</li>
-                    <li>Security</li>
-                  </ul>
+                <div class="flex gap-10 xl:gap-15">
+                  <a href="#" target="_blank" aria-label="Facebook konto">
+                    <img
+                      src="assets/icons/linkedin.svg"
+                      alt=""
+                      class="not-md:w-24 w-27"
+                    />
+                  </a>
+                  <a href="#" target="_blank" aria-label="Instagram konto">
+                    <img
+                      src="assets/icons/instagram.svg"
+                      alt=""
+                      class="not-md:w-24 w-27"
+                    />
+                  </a>
                 </div>
-                <p class="highlight-text">Cases</p>
-              </div>
-              <div class="col">
-                <div class="pb-20 border-b border-white/20 space-y-5">
-                  <p class="highlight-text">Insights</p>
-                  <ul class="space-y-4 link">
-                    <li>Articles</li>
-                    <li>Perspectives</li>
-                    <li>Reports</li>
-                    <li>Events</li>
-                  </ul>
-                </div>
-                <div class="pb-20 border-b border-white/20 space-y-5">
-                  <p class="highlight-text">Über TENSORIS</p>
-                  <ul class="space-y-4 link">
-                    <li>Kernversprechen</li>
-                    <li>Warum wir?</li>
-                    <li>Team</li>
-                  </ul>
-                </div>
-                <div class="space-y-5">
-                  <p class="highlight-text">News</p>
-                  <p class="highlight-text">Kontakt</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="flex justify-between pt-28 pb-16 md:pb-60 items-center">
-            <div>© 2026 Tensoris GmbH & Co. KG</div>
-            <div class="flex gap-50">
-              <div class="space-x-35 hidden md:block">
-                <span class="font-semibold">Impressum</span>
-                <span class="font-semibold">Datenschutz</span>
-              </div>
-              <div class="flex gap-10 xl:gap-15">
-                <a href="#" target="_blank" aria-label="Facebook konto">
-                  <img
-                    src="assets/icons/linkedin.svg"
-                    alt=""
-                    class="not-md:w-27"
-                  />
-                </a>
-                <a href="#" target="_blank" aria-label="Instagram konto">
-                  <img
-                    src="assets/icons/instagram.svg"
-                    alt=""
-                    class="not-md:w-27"
-                  />
-                </a>
               </div>
             </div>
           </div>

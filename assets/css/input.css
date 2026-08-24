@@ -139,6 +139,7 @@
   input {
     @apply text-primary px-20 py-14 text-sm leading-24;
   }
+ 
 }
 @utility transition-slow {
   transition: all 0.3s ease;
