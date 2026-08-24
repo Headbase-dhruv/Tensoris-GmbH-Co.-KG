@@ -46,15 +46,16 @@
   /* Responsive Body Font Size */
   --text-body: clamp(0.9375rem, 0.8842rem + 0.2007vw, 1.125rem);
   /* Responsive Body Line Height */
-  --text-body--line-height: clamp(1.5rem, 1.4112rem + 0.3344vw, 1.8125rem);
+  /* --text-body--line-height: clamp(1.5rem, 1.4112rem + 0.3344vw, 1.8125rem); */
 
   --text-h1: clamp(2rem, 1.3036rem + 2.8571vw, 3.875rem);
   /* H1 Line Height */
-  --text-h1--line-height: clamp(3rem, 2.467rem + 2.0067vw, 4.875rem);
+  /* --text-h1--line-height: clamp(3rem, 2.467rem + 2.0067vw, 4.875rem); */
 
   --text-h2: clamp(2rem, 1.5821rem + 1.7143vw, 3.125rem);
   --text-h3: clamp(1rem, 0.9071rem + 0.381vw, 1.25rem);
   --text-18: 18px;
+  --text-14: 14px;
 }
 
 @layer base {
@@ -139,7 +140,49 @@
   input {
     @apply text-primary px-20 py-14 text-sm leading-24;
   }
- 
+  .ctm_list li::before {
+    content: "";
+    display: block;
+    width: 21px;
+    height: 21px;
+    background-image: url("/assets/icons/Li_Icon.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+  .title {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 10px;
+    letter-spacing: 12px;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media (min-width: 768px) {
+  .title {
+    margin: 0;
+  }
+}
+
+  .title::before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 15px;
+    background-image: url("/assets/icons/Title_icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    flex-shrink: 0;
+  }
+
+  .number {
+  font-size: 128px;
+  line-height: 62px;
+  color: var(--color-secondary);
+}
 }
 @utility transition-slow {
   transition: all 0.3s ease;
@@ -159,9 +202,9 @@
 }
 
 @utility btn-primary {
-  @apply bg-secondary text-primary hover:text-secondary hover:bg-transparent border-2 border-secondary hover:border-secondary;
+  @apply bg-secondary text-primary hover:text-secondary hover:bg-transparent border-secondary hover:border-secondary;
 }
 
 @utility btn-secondary {
-  @apply bg-primary text-white hover:text-primary hover:bg-transparent;
+  @apply bg-primary text-white border-primary hover:text-primary hover:bg-transparent;
 }
