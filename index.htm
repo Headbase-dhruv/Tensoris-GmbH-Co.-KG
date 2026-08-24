@@ -327,20 +327,34 @@
               xmlns="http://www.w3.org/2000/svg"
             >
               <style>
-                .straight-lines {
-                  clip-path: inset(0 0 0 0);
-                  transition: clip-path 350ms cubic-bezier(0.4, 0, 0.2, 1);
-                }
-                .straight-lines.active {
-                  clip-path: inset(100% 0 0 0);
-                }
-                .inclined-lines {
-                  clip-path: inset(0 0 100% 0);
-                  transition: clip-path 350ms cubic-bezier(0.4, 0, 0.2, 1);
-                }
-                .inclined-lines.active {
-                  clip-path: inset(0 0 0 0);
-                }
+                <!-- .straight-lines,
+.inclined-lines {
+  transform-origin: center;
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease;
+} -->
+    .straight-lines {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all .4s ease;
+}
+
+.straight-lines.active {
+  opacity: 0;
+  transform: translateY(-8px) scale(.8);
+}
+
+.inclined-lines {
+  opacity: 0;
+  transform: translateY(8px) scale(.8);
+  transition: all .4s ease;
+}
+
+.inclined-lines.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
               </style>
 
               <g class="straight-lines" :class="{ 'active': mobileMenu }">
