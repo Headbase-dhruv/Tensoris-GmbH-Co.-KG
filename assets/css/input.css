@@ -171,7 +171,7 @@
     display: block;
     width: 4px;
     height: 15px;
-    background-image: url("/assets/icons/Title_icon.svg");
+    background-image: url("assets/icons/Title_icon.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
