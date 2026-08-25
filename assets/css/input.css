@@ -7,6 +7,13 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "Literata";
+  src: url("../fonts/Literata-Regular.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme {
   --spacing: 1px;
@@ -38,6 +45,7 @@
   --color-grey: #80888f;
 
   --font-grotesk: "Space-Grotesk";
+  --font-Literata: "Literata";
 
   /* ========================================
        BODY TEXT
@@ -106,7 +114,7 @@
     @apply lg:col-span-2;
   }
   .free_text {
-    @apply flex flex-col gap-20 font-grotesk;
+    @apply flex flex-col gap-20 text-center md:text-start;
   }
 
   h1 {
@@ -121,6 +129,9 @@
   h4 {
     @apply text-18 font-grotesk font-medium;
   }
+  .text-14 {
+    @apply text-14;
+  }
 
   .link li {
     @apply hover:underline transition-slow cursor-pointer;
@@ -129,7 +140,7 @@
     @apply text-secondary font-semibold;
   }
   .paragraph {
-    @apply md:px-58 text-h3;
+    @apply font-Literata;
   }
   .paragraph_box {
     @apply max-w-555;
@@ -140,16 +151,49 @@
   input {
     @apply text-primary px-20 py-14 text-sm leading-24;
   }
-  .ctm_list li::before {
-    content: "";
-    display: block;
-    width: 21px;
-    height: 21px;
-    background-image: url("/assets/icons/Li_Icon.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+  .card_btn {
+    @apply px-22 md:px-24 font-medium w-full text-start text-14;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
   }
+
+  .card_btn::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M15 8l4 4l-4 4'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    transition: transform 0.3s ease;
+  }
+
+  .card_btn:hover::after {
+    transform: translateX(6px);
+  }
+  .ctm_list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.ctm_list li::before {
+  content: "";
+  width: 6px;
+  height: 28px;
+  flex-shrink: 0;
+
+  background-image: url("/assets/icons/Li_Icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
   .title {
     display: inline-flex;
     align-items: center;
@@ -161,10 +205,10 @@
     margin-right: auto;
   }
   @media (min-width: 768px) {
-  .title {
-    margin: 0;
+    .title {
+      margin: 0;
+    }
   }
-}
 
   .title::before {
     content: "";
@@ -179,10 +223,10 @@
   }
 
   .number {
-  font-size: 128px;
-  line-height: 62px;
-  color: var(--color-secondary);
-}
+    font-size: 128px;
+    line-height: 62px;
+    color: var(--color-secondary);
+  }
 }
 @utility transition-slow {
   transition: all 0.3s ease;
