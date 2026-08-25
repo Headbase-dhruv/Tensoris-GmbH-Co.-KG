@@ -213,20 +213,6 @@
     }
   }
 
-.title::before {
-  content: "";
-  display: block;
-  width: 4px;
-  height: 15px;
-
-  background-image: url("/assets/icons/Title_icon.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-
-  flex-shrink: 0;
-}
-
   .number {
     font-size: 128px;
     line-height: 62px;
