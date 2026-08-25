@@ -116,6 +116,9 @@
   .free_text {
     @apply flex flex-col gap-20 text-center md:text-start;
   }
+  .free_text_center {
+    @apply flex flex-col gap-20 text-center;
+  }
 
   h1 {
     @apply text-h1 font-grotesk;
@@ -178,22 +181,22 @@
     transform: translateX(6px);
   }
   .ctm_list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
 
-.ctm_list li::before {
-  content: "";
-  width: 6px;
-  height: 28px;
-  flex-shrink: 0;
+  .ctm_list li::before {
+    content: "";
+    width: 6px;
+    height: 28px;
+    flex-shrink: 0;
 
-  background-image: url("/assets/icons/Li_Icon.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
+    background-image: url("/assets/icons/Li_Icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
   .title {
     display: inline-flex;
     align-items: center;
@@ -210,17 +213,19 @@
     }
   }
 
-  .title::before {
-    content: "";
-    display: block;
-    width: 4px;
-    height: 15px;
-    background-image: url("assets/icons/Title_icon.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    flex-shrink: 0;
-  }
+.title::before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 15px;
+
+  background-image: url("/assets/icons/Title_icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  flex-shrink: 0;
+}
 
   .number {
     font-size: 128px;
