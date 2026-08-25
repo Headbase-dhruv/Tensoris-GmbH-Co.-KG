@@ -192,7 +192,7 @@
     height: 28px;
     flex-shrink: 0;
 
-    background-image: url("/assets/icons/Li_Icon.svg");
+    background-image: url("assets/icons/Li_Icon.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -219,7 +219,7 @@
   width: 4px;
   height: 15px;
 
-  background-image: url("/assets/icons/Title_icon.svg");
+  background-image: url("assets/icons/Title_icon.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
