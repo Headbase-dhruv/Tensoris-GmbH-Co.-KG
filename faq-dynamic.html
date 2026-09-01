@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <script defer src="assets/js/alpine.js"></script>
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <title>Tensoris</title>
+  </head>
+  <style>
+    /* Wipes straight lines DOWN to height 0 */
+    .straight-lines {
+      clip-path: inset(0 0 0 0);
+      transition: clip-path 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .straight-lines.active {
+      clip-path: inset(100% 0 0 0); /* Shrinks height to 0 from top to bottom */
+    }
+
+    /* Wipes inclined lines IN from top to bottom at the exact same time */
+    .inclined-lines {
+      clip-path: inset(0 0 100% 0); /* Starts at height 0 */
+      transition: clip-path 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .inclined-lines.active {
+      clip-path: inset(0 0 0 0); /* Grows to full height */
+    }
+  </style>
+  <body>
+    <header
+      x-data="{ mobileMenu: false }"
+      class="bg-primary text-white relative z-50"
+    >
+      <div
+        x-data="{menu: null }"
+        class="container flex items-center justify-between md:px-50 py-28 lg:py-20"
+      >
+        <a href="/" aria-label="TENSORIS" class="shrink-0">
+          <img
+            src="assets/icons/Logo.svg"
+            alt="TENSORIS"
+            class="w-100 md:w-auto"
+          />
+        </a>
+        <div class="flex items-center gap-60">
+          <nav class="hidden xl:flex">
+            <!-- <ul class="flex gap-25 2xl:gap-45 font-tabular justify-end my-26 relative"> -->
+            <ul class="flex gap-25 2xl:gap-45 font-tabular justify-end">
+              <!-- Item 1: Transformation -->
+              <li
+                x-data="{ open: false }"
+                @mouseenter="open = true"
+                @mouseleave="open = false"
+                class="relative"
+              >
+                <a
+                  href="#"
+                  class="flex items-center gap-2 transition-colors duration-200"
+                  :class="open ? 'text-secondary' : 'hover:text-secondary'"
+                >
+                  <span>Transformation</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </a>
+
+                <!-- Invisible bridge wrapper using pt-4 so hover area is never lost -->
+                <div
+                  x-show="open"
+                  x-transition
+                  class="absolute top-full right-0 pt-24 w-300 z-50"
+                >
+                  <div
+                    class="bg-primary text-white shadow-2xl font-light *:px-20 *:py-12"
+                  >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
+                      >Strategy</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
+                      >Execution</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
+                      >Enablement</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 hover:text-secondary transition-colors"
+                      >Assurance</a
+                    >
+                  </div>
+                </div>
+              </li>
+
+              <!-- Item 2: Technologie -->
+              <li
+                x-data="{ open: false }"
+                @mouseenter="open = true"
+                @mouseleave="open = false"
+                class="relative"
+              >
+                <a
+                  href="#"
+                  class="flex items-center gap-2 transition-colors duration-200"
+                  :class="open ? 'text-secondary' : 'hover:text-secondary'"
+                >
+                  <span>Technologie</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </a>
+
+                <!-- Invisible bridge wrapper using pt-4 -->
+                <div
+                  x-show="open"
+                  x-transition
+                  class="absolute top-full right-0 pt-24 w-300 z-50"
+                >
+                  <div
+                    class="bg-primary text-white shadow-2xl font-light *:px-20 *:py-12"
+                  >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
+                      >Cloud & Plattformen</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
+                      >Architektur</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
+                      >DevOps & Delivery</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
+                      >KI & Secure KI</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 hover:text-secondary transition-colors"
+                      >IT Sicherheit</a
+                    >
+                  </div>
+                </div>
+              </li>
+
+              <!-- Item 3: Cases -->
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-secondary transition-colors duration-200"
+                >
+                  Cases
+                </a>
+              </li>
+
+              <!-- Item 4: Insight -->
+              <li
+                x-data="{ open: false }"
+                @mouseenter="open = true"
+                @mouseleave="open = false"
+                class="relative"
+              >
+                <a
+                  href="faq.html"
+                  class="flex items-center gap-2 transition-colors duration-200"
+                  :class="open ? 'text-secondary' : 'hover:text-secondary'"
+                >
+                  <span>Insight</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </a>
+
+                <!-- Invisible bridge wrapper using pt-4 -->
+                <div
+                  x-show="open"
+                  x-transition
+                  class="absolute top-full right-0 pt-24 w-300 z-50"
+                >
+                  <div
+                    class="bg-primary text-white font-light shadow-2xl *:px-20 *:py-12"
+                  >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
+                      >Articles</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
+                      >Perspectives</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
+                      >Reports</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 hover:text-secondary transition-colors"
+                      >Events</a
+                    >
+                  </div>
+                </div>
+              </li>
+
+              <!-- Item 5: Über TENSORIS -->
+              <li
+                x-data="{ open: false }"
+                @mouseenter="open = true"
+                @mouseleave="open = false"
+                class="relative"
+              >
+                <a
+                  href="faq.html"
+                  class="flex items-center gap-2 transition-colors duration-200"
+                  :class="open ? 'text-secondary' : 'hover:text-secondary'"
+                >
+                  <span>Über TENSORIS</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="transition-transform duration-300"
+                    :class="open ? 'rotate-180' : ''"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </a>
+
+                <!-- Invisible bridge wrapper using pt-4 -->
+                <div
+                  x-show="open"
+                  x-transition
+                  class="absolute top-full right-0 pt-24 w-300 z-50"
+                >
+                  <div
+                    class="bg-primary text-white font-light shadow-2xl *:px-20 *:py-12"
+                  >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
+                      >Haltung</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
+                      >Team</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-6 py-4 hover:text-secondary transition-colors"
+                      >Karriere</a
+                    >
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <button class="btn-transparent hidden xl:block">Kontakt</button>
+          <!-- Mobile Button -->
+          <button
+            @click="mobileMenu = !mobileMenu"
+            class="flex justify-center xl:hidden focus:outline-none w-[26px] h-[24px]"
+            aria-label="Toggle Menu"
+          >
+            <svg
+              width="22"
+              height="24"
+              viewBox="0 0 22 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <style>
+                .straight-lines.active {
+                  opacity: 0;
+                  transform: translateY(-8px) scale(0.8);
+                }
+
+                .inclined-lines {
+                  opacity: 0;
+                  transform: translateY(8px) scale(0.8);
+                  transition: all 0.4s ease;
+                }
+
+                .inclined-lines.active {
+                  opacity: 1;
+                  transform: translateY(0) scale(1);
+                }
+              </style>
+
+              <g class="straight-lines" :class="{ 'active': mobileMenu }">
+                <path d="M0 24L3.11362 0H5.99361L2.88 24H0Z" fill="#89FF20" />
+                <path
+                  d="M7.75781 24L10.8714 0H13.7514L10.6378 24H7.75781Z"
+                  fill="#89FF20"
+                />
+                <path
+                  d="M15.5078 24L18.6214 0H21.5014L18.3878 24H15.5078Z"
+                  fill="#89FF20"
+                />
+              </g>
+
+              <g class="inclined-lines" :class="{ 'active': mobileMenu }">
+                <path
+                  d="M0 24L15.114 0H17.994L2.88 24H0Z"
+                  fill="#89FF20"
+                  transform="translate(2,0)"
+                />
+                <g fill="#89FF20">
+                  <path d="M13.992 24L2.8786 0H0L11.112 24H13.992Z" />
+                  <path
+                    d="M13.992 24L2.8786 0H0L11.112 24H13.992Z"
+                    transform="translate(7,0)"
+                  />
+                </g>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Dropdown Menu -->
+      <div
+        x-show="mobileMenu"
+        x-transition:enter="transition ease-out duration-500"
+        x-transition:enter-start="-translate-y-full opacity-0"
+        x-transition:enter-end="translate-y-0 opacity-300"
+        x-transition:leave="transition ease-out  duration-500"
+        x-transition:leave-start="translate-y-0 opacity-100"
+        x-transition:leave-end="-translate-y-full opacity-0"
+        class="absolute top-full left-0 w-full bg-primary z-40"
+      >
+        <div x-data="{ active: null }" class="container">
+          <div class="border-b border-white/20">
+            <button
+              @click="active = active === 1 ? null : 1"
+              class="flex justify-between w-full py-12"
+              :class="active === 1 ? 'text-secondary' : 'text-white'"
+            >
+              <span>Transformation</span>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="transition-transform duration-300"
+                :class="active === 1 ? 'rotate-180' : ''"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            <div
+              class="overflow-hidden transition-all duration-500 ease-in-out"
+              :class="active === 1
+            ? 'max-h-200 opacity-100 translate-y-0'
+            : 'max-h-0 opacity-0 -translate-y-2'"
+            >
+              <div class="pb-8 flex flex-col">
+                <a href="#" class="py-4 text-sm font-light">Strategy</a>
+                <a href="#" class="py-4 text-sm font-light">Execution</a>
+                <a href="#" class="py-4 text-sm font-light">Enablement</a>
+                <a href="#" class="py-4 text-sm font-light">Assurance</a>
+              </div>
+            </div>
+          </div>
+          <div class="border-b border-white/20">
+            <button
+              @click="active = active === 2 ? null : 2"
+              class="flex justify-between w-full py-12"
+              :class="active === 2 ? 'text-secondary' : 'text-white'"
+            >
+              <span>Technologie</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="transition-transform duration-300"
+                :class="active === 2 ? 'rotate-180' : ''"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            <div
+              class="overflow-hidden transition-all duration-500 ease-in-out"
+              :class="active === 2
+            ? 'max-h-200 opacity-100 translate-y-0'
+            : 'max-h-0 opacity-0 -translate-y-2'"
+            >
+              <a href="#" class="block py-4 text-sm font-light"
+                >Cloud & Plattformen</a
+              >
+              <a href="#" class="block py-4 text-sm font-light">Architektur</a>
+              <a href="#" class="block py-4 text-sm font-light"
+                >DevOps & Delivery</a
+              >
+              <a href="#" class="block py-4 text-sm font-light"
+                >KI & Secure KI</a
+              >
+              <a href="#" class="block py-4 text-sm font-light"
+                >IT Sicherheit</a
+              >
+            </div>
+          </div>
+
+          <a href="#" class="block py-12 border-b border-white/20">Cases</a>
+          <div class="border-b border-white/20">
+            <button
+              @click="active = active === 3 ? null : 3"
+              class="flex justify-between w-full py-12"
+              :class="active === 3 ? 'text-secondary' : 'text-white'"
+            >
+              <span>Insight</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="transition-transform duration-300"
+                :class="active === 3 ? 'rotate-180' : ''"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            <div
+              class="overflow-hidden transition-all duration-500 ease-in-out"
+              :class="active === 3
+            ? 'max-h-200 opacity-100 translate-y-0'
+            : 'max-h-0 opacity-0 -translate-y-2'"
+            >
+              <a href="#" class="block py-4 text-sm font-light">Articles</a>
+              <a href="#" class="block py-4 text-sm font-light">Perspectives</a>
+              <a href="#" class="block py-4 text-sm font-light">Reports</a>
+              <a href="#" class="block py-4 text-sm font-light">Events</a>
+            </div>
+          </div>
+          <div class="border-b border-white/20">
+            <button
+              @click="active = active === 4 ? null : 4"
+              class="flex justify-between w-full py-12"
+              :class="active === 4 ? 'text-secondary' : 'text-white'"
+            >
+              <span>Über TENSORIS</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="transition-transform duration-300"
+                :class="active === 4 ? 'rotate-180' : ''"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            <div
+              class="overflow-hidden transition-all duration-500 ease-in-out"
+              :class="active === 4
+            ? 'max-h-200 opacity-100 translate-y-0'
+            : 'max-h-0 opacity-0 -translate-y-2'"
+            >
+              <a href="#" class="block py-4 text-sm font-light">Haltung</a>
+              <a href="#" class="block py-4 text-sm font-light">Team</a>
+              <a href="#" class="block py-4 text-sm font-light">Karriere</a>
+            </div>
+          </div>
+
+          <button class="btn-transparent my-25 w-fit">Kontakt</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Accordion -->
+      <section class="my_sec">
+        <div class="container">
+          <div class="Accordion">
+            <div class="col py-sec">
+              <div class="free_text paragraph_box">
+                <div class="title flex items-center gap-8">
+                  <img
+                    src="./assets/icons/Title_icon.svg"
+                    alt=""
+                    class="w-4 h-15 shrink-0"
+                  />
+                  <span>Category</span>
+                </div>
+                <h2>Headline vero eos et accusamus et iusto.</h2>
+                <h3>
+                  Subtitle at vero eos et accusamus et iusto odio dignissimos
+                  ducimus qui blanditiis praesentium voluptatum deleniti atque
+                  corrupti quos dolores et. Subtitle at vero eos et accusamus et
+                  iusto odio dignissimos ducimus qui blanditiis praesentium
+                  voluptatum deleniti atque corrupti quos.
+                </h3>
+              </div>
+              <ul x-data="{ active: 0 }" class="flex flex-col gap-16">
+                <li
+                  data-aos="fade-up"
+                  class="py-25 sm:py-32 border-y border-primary/20"
+                >
+                  <button
+                    @click="active = active === 1 ? null : 1"
+                    class="font-lexend flex items-center justify-between gap-50 w-full text-left text-h3"
+                  >
+                    <span class="paragraph_box">
+                      At vero eos et accusamus et iusto odio dignissimos ducimus
+                      qui blanditiis praesentium voluptatum deleniti.
+                    </span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="w-24 h-24 shrink-0 transition-transform duration-300"
+                      :class="{ 'rotate-180 text-secondary': active === 1 }"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+                  <div
+                    x-ref="panel1"
+                    x-init="$el.style.height = active === 1 ? $el.scrollHeight + 'px' : '0px'"
+                    x-effect="$el.style.height = active === 1 ? $el.scrollHeight + 'px' : '0px'"
+                    class="font-Literata font-semibold overflow-hidden transition-[height] duration-300 ease-in-out max-w-1000 *:pt-24"
+                  >
+                    <p>
+                      Body at vero eos et accusamus et iusto odio dignissimos
+                      ducimus qui blanditiis praesentium voluptatum deleniti
+                      atque corrupti quos dolores et quas molestias excepturi
+                      sint occaecati cupiditate non provident, similique sunt in
+                      culpa qui officia deserunt mollitia animi. At vero eos et
+                      accusamus et iusto odio dignissimos ducimus qui blanditiis
+                      praesentium voluptatum deleniti atque corrupti quos
+                      dolores et quas molestias excepturi sint occaecati
+                      cupiditate non provident, similique sunt in culpa qui
+                      officia deserunt mollitia animi.
+                    </p>
+                  </div>
+                </li>
+                <li
+                  data-aos="fade-up"
+                  class="py-25 sm:py-32 border-b border-primary/20"
+                >
+                  <button
+                    @click="active = active === 2 ? null : 2"
+                    class="font-lexend flex items-center justify-between gap-50 w-full text-left text-h3"
+                  >
+                    <span class="">
+                      At vero eos et accusamus et iusto odio dignissimos ducimus
+                      qui blanditiis.
+                    </span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="w-24 h-24 shrink-0 transition-transform duration-300"
+                      :class="{ 'rotate-180 text-secondary': active === 2 }"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+                  <div
+                    x-ref="panel1"
+                    x-init="$el.style.height = active === 2 ? $el.scrollHeight + 'px' : '0px'"
+                    x-effect="$el.style.height = active === 2 ? $el.scrollHeight + 'px' : '0px'"
+                    class="font-Literata font-semibold overflow-hidden transition-[height] duration-300 ease-in-out max-w-1000 *:pt-24"
+                  >
+                    <p>
+                      Body at vero eos et accusamus et iusto odio dignissimos
+                      ducimus qui blanditiis praesentium voluptatum deleniti
+                      atque corrupti quos dolores et quas molestias excepturi
+                      sint occaecati cupiditate non provident, similique sunt in
+                      culpa qui officia deserunt mollitia animi. At vero eos et
+                      accusamus et iusto odio dignissimos ducimus qui blanditiis
+                      praesentium voluptatum deleniti atque corrupti quos
+                      dolores et quas molestias excepturi sint occaecati
+                      cupiditate non provident, similique sunt in culpa qui
+                      officia deserunt mollitia animi.
+                    </p>
+                  </div>
+                </li>
+                <li
+                  data-aos="fade-up"
+                  class="py-25 sm:py-32 border-b border-primary/20"
+                >
+                  <button
+                    @click="active = active === 3 ? null : 3"
+                    class="font-lexend flex items-center justify-between gap-50 w-full text-left text-h3"
+                  >
+                    <span class="paragraph_box">
+                      At vero eos et accusamus et iusto odio dignissimos ducimus
+                      qui blanditiis praesentium voluptatum deleniti.
+                    </span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="w-24 h-24 shrink-0 transition-transform duration-300"
+                      :class="{ 'rotate-180 text-secondary': active === 3 }"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+                  <div
+                    x-ref="panel1"
+                    x-init="$el.style.height = active === 3 ? $el.scrollHeight + 'px' : '0px'"
+                    x-effect="$el.style.height = active === 3 ? $el.scrollHeight + 'px' : '0px'"
+                    class="font-Literata font-semibold overflow-hidden transition-[height] duration-300 ease-in-out max-w-1000 *:pt-24"
+                  >
+                    <p>
+                      Body at vero eos et accusamus et iusto odio dignissimos
+                      ducimus qui blanditiis praesentium voluptatum deleniti
+                      atque corrupti quos dolores et quas molestias excepturi
+                      sint occaecati cupiditate non provident, similique sunt in
+                      culpa qui officia deserunt mollitia animi. At vero eos et
+                      accusamus et iusto odio dignissimos ducimus qui blanditiis
+                      praesentium voluptatum deleniti atque corrupti quos
+                      dolores et quas molestias excepturi sint occaecati
+                      cupiditate non provident, similique sunt in culpa qui
+                      officia deserunt mollitia animi.
+                    </p>
+                  </div>
+                </li>
+                <li
+                  data-aos="fade-up"
+                  class="py-25 sm:py-32 border-b border-primary/20"
+                >
+                  <button
+                    @click="active = active === 4 ? null : 4"
+                    class="font-lexend flex items-center justify-between gap-50 w-full text-left text-h3"
+                  >
+                    <span class="">
+                      At vero eos et accusamus et iusto odio dignissimos ducimus
+                      qui blanditiis.
+                    </span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      class="w-24 h-24 shrink-0 transition-transform duration-300"
+                      :class="{ 'rotate-180 text-secondary': active === 4 }"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+                  <div
+                    x-ref="panel1"
+                    x-init="$el.style.height = active === 4 ? $el.scrollHeight + 'px' : '0px'"
+                    x-effect="$el.style.height = active === 4 ? $el.scrollHeight + 'px' : '0px'"
+                    class="font-Literata font-semibold overflow-hidden transition-[height] duration-300 ease-in-out max-w-1000 *:pt-24"
+                  >
+                    <p>
+                      Body at vero eos et accusamus et iusto odio dignissimos
+                      ducimus qui blanditiis praesentium voluptatum deleniti
+                      atque corrupti quos dolores et quas molestias excepturi
+                      sint occaecati cupiditate non provident, similique sunt in
+                      culpa qui officia deserunt mollitia animi. At vero eos et
+                      accusamus et iusto odio dignissimos ducimus qui blanditiis
+                      praesentium voluptatum deleniti atque corrupti quos
+                      dolores et quas molestias excepturi sint occaecati
+                      cupiditate non provident, similique sunt in culpa qui
+                      officia deserunt mollitia animi.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </section>
+      <!-- FAQ -->
+      
+      <section class="bg-gray-50">
+        <div class="container">
+          <div class="faq-section">
+            <div class="col py-sec">
+              <div
+                class="items-center text-center paragraph_box_lg mx-auto w-full md:py-40 free_text"
+              >
+                <div class="free_text_center w-full">
+                  <div class="title flex items-center justify-center gap-8">
+                    <img
+                      src="./assets/icons/Title_icon.svg"
+                      alt=""
+                      class="w-4 h-15 shrink-0"
+                    />
+                    <span>Category</span>
+                  </div>
+                  <h2>
+                    Headline vero eos et dolore magna accusamus et iusto vero
+                    eos et.
+                  </h2>
+                  <h3>
+                    Subtitle at vero eos et accusamus et iusto odio dignissimos
+                    ducimus qui blanditiis praesentium voluptatum deleniti atque
+                    corrupti quos dolores et.
+                  </h3>
+                </div>
+              </div>
+              <ul
+                x-data="{ active: 0 }"
+                class="flex flex-col gap-16 max-w-1140 mx-auto"
+              >
+                <li
+                  data-aos="fade-up"
+                  class="not-md:p-gutter py-16 sm:py-30 px-20 sm:px-24 border border-[#E2E2E6] bg-white"
+                >
+                  <button
+                    @click="active = active === 1 ? null : 1"
+                    class="font-lexend flex gap-50 font-semibold text-left items-center justify-between w-full"
+                  >
+                    <span class="max-w-1000">
+                      What is your typical turnaround timeline?
+                    </span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      class="w-18 h-18 shrink-0 text-red transition-transform duration-300"
+                      :class="{ 'rotate-45 text-secondary': active === 1 }"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2z"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    x-ref="panel1"
+                    x-init="$el.style.height = active === 1 ? $el.scrollHeight + 'px' : '0px'"
+                    x-effect="$el.style.height = active === 1 ? $el.scrollHeight + 'px' : '0px'"
+                    class="font-Literata overflow-hidden transition-[height] duration-300 ease-in-out max-w-1000 *:pt-15"
+                  >
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Suspendisse varius enim in eros elementum tristique. Duis
+                      cursus, mi quis viverra ornare, eros dolor interdum nulla,
+                      ut commodo diam libero vitae erat. Aenean faucibus nibh et
+                      justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae
+                      risus tristique posuere.
+                    </p>
+                  </div>
+                </li>
+                <li
+                  data-aos="fade-up"
+                  class="not-md:p-gutter py-16 sm:py-30 px-20 sm:px-24 border border-[#E2E2E6] bg-white"
+                >
+                  <button
+                    @click="active = active === 2 ? null : 2"
+                    class="font-lexend flex gap-50 font-semibold text-left items-center justify-between w-full"
+                  >
+                    <span class="max-w-1000">
+                      Do you handle complete engineering integrations?
+                    </span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      class="w-18 h-18 shrink-0 text-red transition-transform duration-300"
+                      :class="{ 'rotate-45 text-secondary': active === 2 }"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2z"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    x-ref="panel1"
+                    x-init="$el.style.height = active === 2 ? $el.scrollHeight + 'px' : '0px'"
+                    x-effect="$el.style.height = active === 2 ? $el.scrollHeight + 'px' : '0px'"
+                    class="font-Literata overflow-hidden transition-[height] duration-300 ease-in-out max-w-1000 *:pt-15"
+                  >
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Suspendisse varius enim in eros elementum tristique. Duis
+                      cursus, mi quis viverra ornare, eros dolor interdum nulla,
+                      ut commodo diam libero vitae erat. Aenean faucibus nibh et
+                      justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae
+                      risus tristique posuere.
+                    </p>
+                  </div>
+                </li>
+                <li
+                  data-aos="fade-up"
+                  class="not-md:p-gutter py-16 sm:py-30 px-20 sm:px-24 border border-[#E2E2E6] bg-white"
+                >
+                  <button
+                    @click="active = active === 3 ? null : 3"
+                    class="font-lexend flex gap-50 font-semibold text-left items-center justify-between w-full"
+                  >
+                    <span class="max-w-1000">
+                      How does the direct pricing framework operate?
+                    </span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      class="w-18 h-18 shrink-0 text-red transition-transform duration-300"
+                      :class="{ 'rotate-45 text-secondary': active === 3 }"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2z"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    x-ref="panel1"
+                    x-init="$el.style.height = active === 3 ? $el.scrollHeight + 'px' : '0px'"
+                    x-effect="$el.style.height = active === 3 ? $el.scrollHeight + 'px' : '0px'"
+                    class="font-Literata overflow-hidden transition-[height] duration-300 ease-in-out max-w-1000 *:pt-15"
+                  >
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Suspendisse varius enim in eros elementum tristique. Duis
+                      cursus, mi quis viverra ornare, eros dolor interdum nulla,
+                      ut commodo diam libero vitae erat. Aenean faucibus nibh et
+                      justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae
+                      risus tristique posuere.
+                    </p>
+                  </div>
+                </li>
+                <li
+                  data-aos="fade-up"
+                  class="not-md:p-gutter py-16 sm:py-30 px-20 sm:px-24 border border-[#E2E2E6] bg-white"
+                >
+                  <button
+                    @click="active = active === 4 ? null : 4"
+                    class="font-lexend flex gap-50 font-semibold text-left items-center justify-between w-full"
+                  >
+                    <span class="max-w-1000">
+                      Can we retain ongoing design optimization plans?
+                    </span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      class="w-18 h-18 shrink-0 text-red transition-transform duration-300"
+                      :class="{ 'rotate-45 text-secondary': active === 4 }"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2z"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    x-ref="panel1"
+                    x-init="$el.style.height = active === 4 ? $el.scrollHeight + 'px' : '0px'"
+                    x-effect="$el.style.height = active === 4 ? $el.scrollHeight + 'px' : '0px'"
+                    class="font-Literata overflow-hidden transition-[height] duration-300 ease-in-out max-w-1000 *:pt-15"
+                  >
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Suspendisse varius enim in eros elementum tristique. Duis
+                      cursus, mi quis viverra ornare, eros dolor interdum nulla,
+                      ut commodo diam libero vitae erat. Aenean faucibus nibh et
+                      justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae
+                      risus tristique posuere.
+                    </p>
+                  </div>
+                </li>
+
+                <li
+                  data-aos="fade-up"
+                  class="not-md:p-gutter py-16 sm:py-30 px-20 sm:px-24 border border-[#E2E2E6] bg-white"
+                >
+                  <button
+                    @click="active = active === 5 ? null : 5"
+                    class="font-lexend flex gap-50 font-semibold text-left items-center justify-between w-full"
+                  >
+                    <span class="max-w-1000">
+                      How does the direct pricing framework operate?
+                    </span>
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      class="w-18 h-18 shrink-0 text-red transition-transform duration-300"
+                      :class="{ 'rotate-45 text-secondary': active === 5 }"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2z"
+                      />
+                    </svg>
+                  </button>
+                  <div
+                    x-ref="panel1"
+                    x-init="$el.style.height = active === 5 ? $el.scrollHeight + 'px' : '0px'"
+                    x-effect="$el.style.height = active === 5 ? $el.scrollHeight + 'px' : '0px'"
+                    class="font-Literata overflow-hidden transition-[height] duration-300 ease-in-out max-w-1000 *:pt-15"
+                  >
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Suspendisse varius enim in eros elementum tristique. Duis
+                      cursus, mi quis viverra ornare, eros dolor interdum nulla,
+                      ut commodo diam libero vitae erat. Aenean faucibus nibh et
+                      justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae
+                      risus tristique posuere.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
