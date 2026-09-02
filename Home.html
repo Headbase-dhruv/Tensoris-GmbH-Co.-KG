@@ -87,16 +87,16 @@
 
                 <!-- Mega Menu -->
                 <div
-  x-show="open"
-  x-cloak
-  x-transition:enter="transition ease-out duration-400"
-  x-transition:enter-start="opacity-0 -translate-y-8 scale-[0.98]"
-  x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-  x-transition:leave="transition ease-in duration-250"
-  x-transition:leave-start="opacity-100 translate-y-0 scale-100"
-  x-transition:leave-end="opacity-0 -translate-y-4 scale-[0.98]"
-  class="fixed left-0 w-full z-50 transform-gpu origin-top"
->
+                  x-show="open"
+                  x-cloak
+                  x-transition:enter="transition ease-out duration-400"
+                  x-transition:enter-start="opacity-0 -translate-y-8 scale-[0.98]"
+                  x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                  x-transition:leave="transition ease-in duration-250"
+                  x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                  x-transition:leave-end="opacity-0 -translate-y-4 scale-[0.98]"
+                  class="fixed left-0 w-full z-50 transform-gpu origin-top"
+                >
                   <div
                     class="w-full flex justify-center bg-primary/95 text-white"
                   >
@@ -565,7 +565,7 @@
         x-transition:leave="transform transition ease-in duration-300"
         x-transition:leave-start="translate-x-0"
         x-transition:leave-end="translate-x-full"
-        class="fixed inset-y-0 top-80 lg:top-60 right-0 w-[85%] max-w-500 max-w-420px bg-primary z-50 overflow-y-auto"
+        class="fixed top-80 lg:top-60 right-0 bottom-0 w-[85%] max-w-500 bg-primary z-50 overflow-y-auto"
       >
         <div x-data="{ active: null }" class="container py-14 md:py-20">
           <div class="border-b border-white/20">
@@ -805,7 +805,7 @@
 
           <div
             x-data="Testimonials()"
-            class="lg:border-l border-white/20 lg:pl-92 pr-32 pb-32"
+            class="xl:border-l border-white/20 xl:pl-92 pr-32 pb-32"
           >
             <div x-transition.opacity.duration.500ms>
               <div class="space-y-6 pb-20">
@@ -851,7 +851,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </header>
@@ -924,192 +923,12 @@
         </div>
       </section>
 
-      <!--  -->
-      <section class="">
-        <div class="container xl:mx-auto lg:pr-0 mx-0">
-          <div class="nur_text">
-            <div class="row cols_1_1">
-              <div class="col gap-25 md:gap-45 py-62 xl:max-w-570">
-                <div class="free_text">
-                  <div class="title flex items-center gap-8">
-                    <img
-                      src="./assets/icons/Title_icon.svg"
-                      alt=""
-                      class="w-4 h-15 shrink-0"
-                    />
-                    <span>Category</span>
-                  </div>
-                  <h2>Headline vero eos et accusamus et iusto.</h2>
-                  <h3>
-                    Subtitle at vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis praesentium et.
-                  </h3>
-                </div>
-                <div class="relative lg:hidden min-h-200">
-                  <img
-                    src="assets/images/tensoris.webp"
-                    alt=""
-                    class="w-full h-full object-cover absolute"
-                  />
-                </div>
-                <div class="space-y-30">
-                  <p class="font-Literata free_text">
-                    Body at vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas molestias excepturi sint
-                    occaecati cupiditate non provident, similique sunt in culpa
-                    qui officia deserunt mollitia animi.
-                  </p>
-                  <ul class="ctm_list">
-                    <li>
-                      Voluptatum deleniti atque corrupti quos dolores et quas
-                      molestias
-                    </li>
-                    <li>
-                      Voluptatum deleniti atque corrupti quos dolores et quas
-                      molestias
-                    </li>
-                  </ul>
-                  <p class="font-Literata mt-5 free_text gap-0">
-                    <span
-                      ><img
-                        src="assets/icons/comaa.svg"
-                        alt=""
-                        class="mx-auto md:mx-0"
-                    /></span>
-                    Body at vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas molestias.”
-                  </p>
-                </div>
-                <div class="md:mt-20">
-                  <div class="flex flex-col md:flex-row gap-12 md:gap-16">
-                    <button class="btn btn-primary">Primärer Absprung</button>
-                    <button class="btn btn-secondary">
-                      Sekundärer Absprung
-                    </button>
-                  </div>
-                </div>
-                <p
-                  class="font-Literata text-[#01112066] text-sm text-center sm:text-start"
-                >
-                  Voluptatum deleniti atque corrupti quos dolores et quas
-                  molestias excepturi sint occaecati cupiditate non provident,
-                  similique sunt in culpa qui officia deserunt mollitia animi
-                  fuga.
-                </p>
-              </div>
-              <div class="col relative hidden md:block">
-                <div
-                  class="absolute inset-0 bg-white -right-0.5 xl:image-slant-left"
-                ></div>
-                <img
-                  src="assets/images/man.webp"
-                  alt=""
-                  class="w-full h-full"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!--  -->
-      <section class="">
-        <div class="container xl:mx-auto lg:pl-0 ml-0">
-          <div class="nur_text">
-            <div class="row cols_1_1">
-              <div class="col relative hidden md:block">
-                <div
-                  class="absolute inset-0 bg-white -right-0.5 xl:image-slant-right"
-                ></div>
-                <img
-                  src="assets/images/woman.webp"
-                  alt=""
-                  class="w-full h-full"
-                />
-              </div>
-              <div class="col gap-25 md:gap-45 py-62 xl:max-w-570">
-                <div class="free_text">
-                  <div class="title flex items-center gap-8">
-                    <img
-                      src="./assets/icons/Title_icon.svg"
-                      alt=""
-                      class="w-4 h-15 shrink-0"
-                    />
-                    <span>Category</span>
-                  </div>
-                  <h2>Headline vero eos et accusamus et iusto.</h2>
-                  <h3>
-                    Subtitle at vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis praesentium et.
-                  </h3>
-                </div>
-                <div class="relative lg:hidden min-h-200">
-                  <img
-                    src="assets/images/tensoris.webp"
-                    alt=""
-                    class="w-full h-full object-cover absolute"
-                  />
-                </div>
-                <div class="space-y-30">
-                  <p class="font-Literata free_text">
-                    Body at vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas molestias excepturi sint
-                    occaecati cupiditate non provident, similique sunt in culpa
-                    qui officia deserunt mollitia animi.
-                  </p>
-                  <ul class="ctm_list">
-                    <li>
-                      Voluptatum deleniti atque corrupti quos dolores et quas
-                      molestias
-                    </li>
-                    <li>
-                      Voluptatum deleniti atque corrupti quos dolores et quas
-                      molestias
-                    </li>
-                  </ul>
-                  <p class="font-Literata mt-5 free_text gap-0">
-                    <span
-                      ><img
-                        src="assets/icons/comaa.svg"
-                        alt=""
-                        class="mx-auto md:mx-0"
-                    /></span>
-                    Body at vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas molestias.”
-                  </p>
-                </div>
-                <div class="md:mt-20">
-                  <div class="flex flex-col md:flex-row gap-12 md:gap-16">
-                    <button class="btn btn-primary">Primärer Absprung</button>
-                    <button class="btn btn-secondary">
-                      Sekundärer Absprung
-                    </button>
-                  </div>
-                </div>
-                <p
-                  class="font-Literata text-[#01112066] text-sm text-center sm:text-start"
-                >
-                  Voluptatum deleniti atque corrupti quos dolores et quas
-                  molestias excepturi sint occaecati cupiditate non provident,
-                  similique sunt in culpa qui officia deserunt mollitia animi
-                  fuga.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="my-sec">
         <div class="container">
-          <div class="nur_text">
-            <div class="col gap-25 md:gap-45 xl:ms-sec paragraph_box">
+          <div class="text">
+            <div class="grid lg:grid-cols-2 gap-sec">
               <div class="free_text">
-                <div class="title flex items-center gap-8">
+                <div class="title flex gap-8">
                   <img
                     src="./assets/icons/Title_icon.svg"
                     alt=""
@@ -1117,65 +936,142 @@
                   />
                   <span>Category</span>
                 </div>
-                <h2>Headline vero eos et accusamus et iusto.</h2>
-                <h3>
+                <h2>
+                  Headline vero eos et dolore magna accusamus et iusto vero eos
+                  et.
+                </h2>
+                <h3 class="max-w-740 mx-auto">
                   Subtitle at vero eos et accusamus et iusto odio dignissimos
-                  ducimus qui blanditiis praesentium et.
+                  ducimus qui blanditiis praesentium voluptatum deleniti atque
+                  corrupti quos dolores et.
                 </h3>
               </div>
-              <div class="space-y-30">
-                <p class="font-Literata free_text">
+              <div class="free_text lg:py-18 2xl:w-[90%]">
+                <p>
                   Body at vero eos et accusamus et iusto odio dignissimos
                   ducimus qui blanditiis praesentium voluptatum deleniti atque
                   corrupti quos dolores et quas molestias excepturi sint
                   occaecati cupiditate non provident, similique sunt in culpa
-                  qui officia deserunt mollitia animi.
+                  qui officia deserunt mollitia animi. Lorem ipsum dolor sit
+                  amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                  sed diam.
                 </p>
-                <ul class="ctm_list">
-                  <li>
-                    Voluptatum deleniti atque corrupti quos dolores et quas
-                    molestias
-                  </li>
-                  <li>
-                    Voluptatum deleniti atque corrupti quos dolores et quas
-                    molestias
-                  </li>
-                </ul>
-                <p class="font-Literata mt-5 free_text gap-0">
-                  <span
-                    ><img
-                      src="assets/icons/comaa.svg"
-                      alt=""
-                      class="mx-auto md:mx-0"
-                  /></span>
-                  Body at vero eos et accusamus et iusto odio dignissimos
-                  ducimus qui blanditiis praesentium voluptatum deleniti atque
-                  corrupti quos dolores et quas molestias.”
+                <p>
+                  At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                  clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+                  dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+                  sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                  labore et dolore magna aliquyam erat, sed diam voluptua. At
+                  vero eos et accusam et justo duo dolores et ea rebum. Stet
+                  clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+                  dolor sit amet.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                  aliquyam erat, sed diam voluptua.
                 </p>
               </div>
-              <div class="mt-20">
-                <div class="flex flex-col md:flex-row gap-12 md:gap-16">
-                  <button class="btn btn-primary">Primärer Absprung</button>
-                  <button class="btn btn-secondary">Sekundärer Absprung</button>
-                </div>
-              </div>
-              <p class="font-Literata text-[#01112066] text-sm">
-                Voluptatum deleniti atque corrupti quos dolores et quas
-                molestias excepturi sint occaecati cupiditate non provident,
-                similique sunt in culpa qui officia deserunt mollitia animi
-                fuga.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="my-sec">
+      <!-- Image + Text -->
+      <section class="">
+        <div class="container xl:mx-auto lg:pl-0 lg:ml-0">
+          <div class="nur_text">
+            <div class="row cols_1_1">
+              <div class="col relative hidden lg:block">
+                <div
+                  class="absolute inset-0 bg-white -right-0.5 xl:image-slant-right"
+                ></div>
+                <img
+                  src="assets/images/woman.webp"
+                  alt=""
+                  class="h-full inset-0"
+                />
+              </div>
+              <div class="col gap-25 md:gap-45 py-62 xl:max-w-570">
+                <div class="free_text">
+                  <div class="title flex items-center gap-8">
+                    <img
+                      src="./assets/icons/Title_icon.svg"
+                      alt=""
+                      class="w-4 h-15 shrink-0"
+                    />
+                    <span>Category</span>
+                  </div>
+                  <h2>Headline vero eos et accusamus et iusto.</h2>
+                  <h3>
+                    Subtitle at vero eos et accusamus et iusto odio dignissimos
+                    ducimus qui blanditiis praesentium et.
+                  </h3>
+                </div>
+                <div class="relative lg:hidden min-h-200">
+                  <img
+                    src="assets/images/tensoris.webp"
+                    alt=""
+                    class="w-full h-full object-cover absolute"
+                  />
+                </div>
+                <div class="space-y-30">
+                  <p class="font-Literata free_text">
+                    Body at vero eos et accusamus et iusto odio dignissimos
+                    ducimus qui blanditiis praesentium voluptatum deleniti atque
+                    corrupti quos dolores et quas molestias excepturi sint
+                    occaecati cupiditate non provident, similique sunt in culpa
+                    qui officia deserunt mollitia animi.
+                  </p>
+                  <ul class="ctm_list">
+                    <li>
+                      Voluptatum deleniti atque corrupti quos dolores et quas
+                      molestias
+                    </li>
+                    <li>
+                      Voluptatum deleniti atque corrupti quos dolores et quas
+                      molestias
+                    </li>
+                  </ul>
+                  <p class="font-Literata mt-5 free_text gap-0">
+                    <span
+                      ><img
+                        src="assets/icons/comaa.svg"
+                        alt=""
+                        class="mx-auto md:mx-0"
+                    /></span>
+                    Body at vero eos et accusamus et iusto odio dignissimos
+                    ducimus qui blanditiis praesentium voluptatum deleniti atque
+                    corrupti quos dolores et quas molestias.”
+                  </p>
+                </div>
+                <div class="md:mt-20">
+                  <div class="flex flex-col md:flex-row gap-12 md:gap-16">
+                    <button class="btn btn-primary">Primärer Absprung</button>
+                    <button class="btn btn-secondary">
+                      Sekundärer Absprung
+                    </button>
+                  </div>
+                </div>
+                <p
+                  class="font-Literata text-[#01112066] text-sm text-center sm:text-start"
+                >
+                  Voluptatum deleniti atque corrupti quos dolores et quas
+                  molestias excepturi sint occaecati cupiditate non provident,
+                  similique sunt in culpa qui officia deserunt mollitia animi
+                  fuga.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cemter text -->
+      <section class="py-sec bg-primary text-white ctm_sec">
         <div class="container">
           <div class="text-only">
-            <div
-              class="col items-center text-center max-w-980 mx-auto w-full md:py-40"
-            >
+            <div class="col items-center text-center max-w-980 mx-auto w-full">
               <div class="free_text_center">
                 <div class="title flex justify-center items-center gap-8">
                   <img
@@ -1199,7 +1095,84 @@
                 class="flex w-full justify-center flex-col md:flex-row gap-12 md:gap-24"
               >
                 <button class="btn btn-primary">Primärer Absprung</button>
-                <button class="btn btn-secondary">Sekundärer Absprung</button>
+                <button class="btn bg-white text-primary">
+                  Sekundärer Absprung
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="glow -left-400 top-254 h-1155 w-1155 hidden md:block"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Numbars -->
+      <section class="my-sec">
+        <div class="container">
+          <div class="Zahlen_&_Fakten">
+            <div class="free_text paragraph_box_lg">
+              <div class="title flex items-center gap-8">
+                <img
+                  src="./assets/icons/Title_icon.svg"
+                  alt=""
+                  class="w-4 h-15 shrink-0"
+                />
+                <span>Category</span>
+              </div>
+              <h2>
+                Headline vero eos et dolore magna accusamus et iusto vero eos
+                et.
+              </h2>
+              <h3>
+                Subtitle at vero eos et accusamus et iusto odio dignissimos
+                ducimus qui blanditiis praesentium voluptatum deleniti atque
+                corrupti quos dolores et.
+              </h3>
+            </div>
+            <div
+              class="mt-sec grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:border border-primary/20 gap-y-40 md:gap-0"
+            >
+              <div
+                class="py-sec px-44 pb-44 border xl:border-b md:border-r border-primary/20"
+              >
+                <h1 class="number">01</h1>
+                <h3 class="mt-68 mb-15">Technologie</h3>
+                <p class="paragraph">
+                  Body at vero eos et iusto odio dignissimos ducimus qui
+                  blanditiis praesentium voluptatum deleniti.
+                </p>
+              </div>
+              <div
+                class="py-sec px-44 pb-44 border md:border-b xl:border-r border-primary/20"
+              >
+                <h1 class="number">02</h1>
+                <h3 class="mt-68 mb-15">Organisation</h3>
+                <p class="paragraph">
+                  Body at vero eos et iusto odio dignissimos ducimus qui
+                  blanditiis praesentium voluptatum deleniti.
+                </p>
+              </div>
+              <div
+                class="py-sec px-44 pb-44 border md:border-b xl:border-r border-primary/20"
+              >
+                <h1 class="number">03</h1>
+                <h3 class="mt-68 mb-15">Umsetzung</h3>
+                <p class="paragraph">
+                  Body at vero eos et iusto odio dignissimos ducimus qui
+                  blanditiis praesentium voluptatum deleniti.
+                </p>
+              </div>
+              <div
+                class="py-sec px-44 pb-44 border border-primary/20 xl:border-0"
+              >
+                <h1 class="number">04</h1>
+                <h3 class="mt-68 mb-15">Monitoring</h3>
+                <p class="paragraph">
+                  Body at vero eos et iusto odio dignissimos ducimus qui
+                  blanditiis praesentium voluptatum deleniti.
+                </p>
               </div>
             </div>
           </div>
@@ -1222,7 +1195,7 @@
             </div>
             <!-- Back  -->
             <div
-              class="xl:absolute inset-0 bg-white/90 border-r-8 container max-w-1920 xl:px-62 xl:mx-0 row xl:gap-0 border"
+              class="xl:absolute inset-0 bg-primary/90 text-white border-r-8 container max-w-1920 xl:px-62 xl:mx-0 row xl:gap-0"
               style="clip-path: polygon(0 0, 40% 0, 35% 100%, 0% 100%)"
             >
               <!-- contente  -->
@@ -1295,197 +1268,7 @@
         </div>
       </section>
 
-      <!-- Now Work -->
-      <section>
-        <div class="">
-          <div class="CTA element">
-            <div
-              class="py-47 lg:flex items-center w-full max-w-1200 mx-auto border"
-            >
-              <div class="lg:w-3/4 ms-sec free_text max-w-650">
-                <h2 class="text-40">
-                  Dein Vorhaben könnte die nächste Case Study sein.
-                </h2>
-                <p class="font-Literata">
-                  Bringen wir Komplexität in Bewegung.
-                </p>
-              </div>
-
-              <div class="w-1/4 relative flex items-center justify-center">
-                <div
-                  class="absolute inset-0 bg-white xl:image-slant-left"
-                ></div>
-
-                <button class="btn btn-primary relative z-10">
-                  Erstgespräch vereinbaren
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Using grid -->
-      <section>
-        <div class="CTA element">
-          <div
-            class="flex flex-col md:flex-row w-full justify-between max-w-1200 mx-auto border overflow-hidden"
-          >
-            <div class="w-full md:w-2/3 py-47 xl:ms-sec free_text max-w-650">
-              <h2 class="text-40">
-                Dein Vorhaben könnte die nächste Case Study sein.
-              </h2>
-
-              <button class="btn btn-primary">Erstgespräch vereinbaren</button>
-            </div>
-
-            <div
-              class="relative flex-1 w-full md:w-1/3 min-h-200 md:min-h-auto"
-            >
-              <div
-                class="absolute inset-0 bg-white -right-0.5 xl:image-slant-left z-10 pointer-events-none"
-              ></div>
-              <img
-                src="assets/images/tensoris.webp"
-                alt=""
-                class="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="my_sec">
-        <div class="container">
-          <div class="Accordion">
-            <div class="col py-sec">
-              <div class="free_text paragraph_box">
-                <div class="title flex items-center gap-8">
-                  <img
-                    src="./assets/icons/Title_icon.svg"
-                    alt=""
-                    class="w-4 h-15 shrink-0"
-                  />
-                  <span>Category</span>
-                </div>
-                <h2>Headline vero eos et accusamus et iusto.</h2>
-                <h3>
-                  Subtitle at vero eos et accusamus et iusto odio dignissimos
-                  ducimus qui blanditiis praesentium voluptatum deleniti atque
-                  corrupti quos dolores et. Subtitle at vero eos et accusamus et
-                  iusto odio dignissimos ducimus qui blanditiis praesentium
-                  voluptatum deleniti atque corrupti quos.
-                </h3>
-              </div>
-              <ul x-data="accordionData()" class="flex flex-col gap-16">
-                <template x-for="(item,index) in items" :key="index">
-                  <li
-                    data-aos="fade-up"
-                    class="py-25 sm:py-32 border-b border-primary/20"
-                  >
-                    <button
-                      @click="active = active === index ? null : index"
-                      class="flex items-center justify-between gap-50 w-full text-left text-h3"
-                    >
-                      <span class="paragraph_box" x-text="item.title"></span>
-
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        class="w-24 h-24 shrink-0 transition-transform duration-300"
-                        :class="{ 'rotate-180 text-secondary': active === index }"
-                      >
-                        <path d="m6 9 6 6 6-6" />
-                      </svg>
-                    </button>
-
-                    <div
-                      x-init="$el.style.height = active === index ? $el.scrollHeight + 'px' : '0px'"
-                      x-effect="$el.style.height = active === index ? $el.scrollHeight + 'px' : '0px'"
-                      class="font-Literata overflow-hidden transition-[height] duration-300 ease-in-out max-w-1000 *:pt-15"
-                    >
-                      <p x-text="item.content"></p>
-                    </div>
-                  </li>
-                </template>
-              </ul>
-            </div>
-            <div></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="bg-gray-50">
-        <div class="container">
-          <div class="faq-section">
-            <div class="col py-sec">
-              <div
-                class="items-center text-center paragraph_box_lg mx-auto w-full md:py-40 free_text"
-              >
-                <div class="free_text_center w-full">
-                  <div class="title flex items-center justify-center gap-8">
-                    <img
-                      src="./assets/icons/Title_icon.svg"
-                      alt=""
-                      class="w-4 h-15 shrink-0"
-                    />
-                    <span>Category</span>
-                  </div>
-                  <h2>
-                    Headline vero eos et dolore magna accusamus et iusto vero
-                    eos et.
-                  </h2>
-                  <h3>
-                    Subtitle at vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et.
-                  </h3>
-                </div>
-              </div>
-              <div x-data="faqData()">
-                <ul class="flex flex-col gap-16 max-w-1140 mx-auto">
-                  <template x-for="(faq, index) in faqs" :key="index">
-                    <li
-                      data-aos="fade-up"
-                      class="not-md:p-gutter py-16 sm:py-30 px-20 sm:px-24 border border-[#E2E2E6] bg-white"
-                    >
-                      <button
-                        @click="active = active === index ? null : index"
-                        class="flex gap-50 font-semibold text-left items-center justify-between w-full"
-                        :aria-expanded="active === index"
-                      >
-                        <span class="max-w-1000" x-text="faq.question"></span>
-
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          class="w-18 h-18 shrink-0 transition-transform duration-300"
-                          :class="active === index ? 'rotate-45 text-secondary' : ''"
-                        >
-                          <path
-                            fill="currentColor"
-                            d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2z"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-init="$el.style.height = active === index ? $el.scrollHeight + 'px' : '0px'"
-                        x-effect="$el.style.height = active === index ? $el.scrollHeight + 'px' : '0px'"
-                        class="font-Literata overflow-hidden transition-[height] duration-500 ease-in-out max-w-1000 *:pt-15"
-                      >
-                        <p x-text="faq.answer"></p>
-                      </div>
-                    </li>
-                  </template>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <!-- news -->
       <section class="py-sec bg-primary/5">
         <div class="container">
           <div class="news">
@@ -1569,80 +1352,145 @@
         </div>
       </section>
 
-      <section class="my-sec">
+      <!-- Accordion -->
+      <section class="my_sec">
         <div class="container">
-          <div class="Zahlen_&_Fakten">
-            <div class="free_text paragraph_box_lg">
-              <div class="title flex items-center gap-8">
-                <img
-                  src="./assets/icons/Title_icon.svg"
-                  alt=""
-                  class="w-4 h-15 shrink-0"
-                />
-                <span>Category</span>
+          <div class="Accordion">
+            <div class="col py-sec">
+              <div class="free_text paragraph_box">
+                <div class="title flex items-center gap-8">
+                  <img
+                    src="./assets/icons/Title_icon.svg"
+                    alt=""
+                    class="w-4 h-15 shrink-0"
+                  />
+                  <span>Category</span>
+                </div>
+                <h2>Headline vero eos et accusamus et iusto.</h2>
+                <h3>
+                  Subtitle at vero eos et accusamus et iusto odio dignissimos
+                  ducimus qui blanditiis praesentium voluptatum deleniti atque
+                  corrupti quos dolores et. Subtitle at vero eos et accusamus et
+                  iusto odio dignissimos ducimus qui blanditiis praesentium
+                  voluptatum deleniti atque corrupti quos.
+                </h3>
               </div>
-              <h2>
-                Headline vero eos et dolore magna accusamus et iusto vero eos
-                et.
-              </h2>
-              <h3>
-                Subtitle at vero eos et accusamus et iusto odio dignissimos
-                ducimus qui blanditiis praesentium voluptatum deleniti atque
-                corrupti quos dolores et.
-              </h3>
+              <ul x-data="accordionData()" class="flex flex-col gap-16">
+                <template x-for="(item,index) in items" :key="index">
+                  <li
+                    data-aos="fade-up"
+                    class="py-25 sm:py-32 border-b border-primary/20"
+                  >
+                    <button
+                      @click="active = active === index ? null : index"
+                      class="flex items-center justify-between gap-50 w-full text-left text-h3"
+                    >
+                      <span class="paragraph_box" x-text="item.title"></span>
+
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        class="w-24 h-24 shrink-0 transition-transform duration-300"
+                        :class="{ 'rotate-180 text-secondary': active === index }"
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+
+                    <div
+                      x-init="$el.style.height = active === index ? $el.scrollHeight + 'px' : '0px'"
+                      x-effect="$el.style.height = active === index ? $el.scrollHeight + 'px' : '0px'"
+                      class="font-Literata overflow-hidden transition-[height] duration-300 ease-in-out max-w-1000 *:pt-15"
+                    >
+                      <p x-text="item.content"></p>
+                    </div>
+                  </li>
+                </template>
+              </ul>
             </div>
-            <div
-              class="mt-sec grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:border border-primary/20 gap-y-40 md:gap-0"
-            >
+            <div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="bg-gray-50">
+        <div class="container">
+          <div class="faq-section">
+            <div class="col py-sec">
               <div
-                class="py-sec px-44 pb-44 border xl:border-b md:border-r border-primary/20"
+                class="items-center text-center paragraph_box_lg mx-auto w-full md:py-40 free_text"
               >
-                <h1 class="number">01</h1>
-                <h3 class="mt-68 mb-15">Technologie</h3>
-                <p class="paragraph">
-                  Body at vero eos et iusto odio dignissimos ducimus qui
-                  blanditiis praesentium voluptatum deleniti.
-                </p>
+                <div class="free_text_center w-full">
+                  <div class="title flex items-center justify-center gap-8">
+                    <img
+                      src="./assets/icons/Title_icon.svg"
+                      alt=""
+                      class="w-4 h-15 shrink-0"
+                    />
+                    <span>Category</span>
+                  </div>
+                  <h2>
+                    Headline vero eos et dolore magna accusamus et iusto vero
+                    eos et.
+                  </h2>
+                  <h3>
+                    Subtitle at vero eos et accusamus et iusto odio dignissimos
+                    ducimus qui blanditiis praesentium voluptatum deleniti atque
+                    corrupti quos dolores et.
+                  </h3>
+                </div>
               </div>
-              <div
-                class="py-sec px-44 pb-44 border md:border-b xl:border-r border-primary/20"
-              >
-                <h1 class="number">02</h1>
-                <h3 class="mt-68 mb-15">Organisation</h3>
-                <p class="paragraph">
-                  Body at vero eos et iusto odio dignissimos ducimus qui
-                  blanditiis praesentium voluptatum deleniti.
-                </p>
-              </div>
-              <div
-                class="py-sec px-44 pb-44 border md:border-b xl:border-r border-primary/20"
-              >
-                <h1 class="number">03</h1>
-                <h3 class="mt-68 mb-15">Umsetzung</h3>
-                <p class="paragraph">
-                  Body at vero eos et iusto odio dignissimos ducimus qui
-                  blanditiis praesentium voluptatum deleniti.
-                </p>
-              </div>
-              <div
-                class="py-sec px-44 pb-44 border border-primary/20 xl:border-0"
-              >
-                <h1 class="number">04</h1>
-                <h3 class="mt-68 mb-15">Monitoring</h3>
-                <p class="paragraph">
-                  Body at vero eos et iusto odio dignissimos ducimus qui
-                  blanditiis praesentium voluptatum deleniti.
-                </p>
+              <div x-data="faqData()">
+                <ul class="flex flex-col gap-16 max-w-1140 mx-auto">
+                  <template x-for="(faq, index) in faqs" :key="index">
+                    <li
+                      data-aos="fade-up"
+                      class="not-md:p-gutter py-16 sm:py-30 px-20 sm:px-24 border border-[#E2E2E6] bg-white"
+                    >
+                      <button
+                        @click="active = active === index ? null : index"
+                        class="flex gap-50 font-semibold text-left items-center justify-between w-full"
+                        :aria-expanded="active === index"
+                      >
+                        <span class="max-w-1000" x-text="faq.question"></span>
+
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          class="w-18 h-18 shrink-0 transition-transform duration-300"
+                          :class="active === index ? 'rotate-45 text-secondary' : ''"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M18 12.998h-5v5a1 1 0 0 1-2 0v-5H6a1 1 0 0 1 0-2h5v-5a1 1 0 0 1 2 0v5h5a1 1 0 0 1 0 2z"
+                          />
+                        </svg>
+                      </button>
+                      <div
+                        x-init="$el.style.height = active === index ? $el.scrollHeight + 'px' : '0px'"
+                        x-effect="$el.style.height = active === index ? $el.scrollHeight + 'px' : '0px'"
+                        class="font-Literata overflow-hidden transition-[height] duration-500 ease-in-out max-w-1000 *:pt-15"
+                      >
+                        <p x-text="faq.answer"></p>
+                      </div>
+                    </li>
+                  </template>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- Testimonials -->
       <section class="my-sec">
         <div class="container">
           <div class="kundenstimmen">
-            <div class="space-y-30 hidden lg:block">
+            <div class="space-y-30">
               <div class="free_text">
                 <div class="title flex items-center gap-8">
                   <img
@@ -1660,117 +1508,69 @@
                 </h3>
               </div>
               <div
-                x-data="{ active: 0,
-                          init() {
-                            setInterval(() => {
-                              this.active = (this.active + 1) % 3
-                            }, 4000)
-                          }
-                        }"
-                class="row grid grid-cols-12"
+                x-data="TestimonialsSlider()"
+                x-init="init()"
+                class="row md:grid md:grid-cols-12"
               >
+                <!-- Image -->
                 <div
-                  class="col col-span-5 relative h-490 max-w-390 overflow-hidden"
+                  class="col md:col-span-5 relative h-200 sm:h-490 w-full md:max-w-390 overflow-hidden"
                 >
-                  <template x-if="active === 0">
-                    <img
-                      src="assets/images/tensoris2.webp"
-                      alt=""
-                      class="absolute object-cover h-full w-full"
-                    />
-                  </template>
-                  <template x-if="active === 1">
-                    <img
-                      src="assets/images/tensoris2.webp"
-                      alt=""
-                      class="absolute object-cover h-full w-full"
-                    />
-                  </template>
-                  <template x-if="active === 2">
-                    <img
-                      src="assets/images/tensoris2.webp"
-                      alt=""
-                      class="absolute object-cover h-full w-full"
-                    />
-                  </template>
+                  <img
+                    :src="slides[active].image"
+                    :alt="slides[active].name"
+                    class="hidden sm:block absolute object-cover object-top h-full w-full transition-all duration-500"
+                  />
+                  <img
+                    :src="slides[active].imageMobile"
+                    :alt="slides[active].name"
+                    class="sm:hidden absolute object-cover inset-0 w-full transition-all duration-500"
+                  />
 
                   <img
                     src="assets/icons/Overimg.svg"
                     alt=""
-                    class="absolute ml-auto inset-0 h-full object-cover z-10 -right-0.5"
+                    class="hidden md:block absolute ml-auto inset-0 h-full object-cover z-10 -right-0.5"
                   />
                 </div>
-                <div class="col gap-0 col-span-7 py-65 paragraph_box">
-                  <div x-show=" active === 0">
-                    <div class="mb-65">
-                      <img src="assets//icons/comaa.svg" alt="" />
-                      <h4 class="text-32 mt-10 mb-12">Manfred Mustermann</h4>
-                      <p>Head of Engineering, Musterfirma</p>
+
+                <!-- Content -->
+                <div class="col gap-0 md:col-span-7 md:py-65 paragraph_box">
+                  <div x-transition.opacity.duration.500ms>
+                    <div class="mb-45 md:mb-65">
+                      <img src="assets/icons/comaa.svg" alt="" />
+
+                      <h4
+                        class="text-32 mt-10 mb-12"
+                        x-text="slides[active].name"
+                      ></h4>
+
+                      <p x-text="slides[active].role"></p>
                     </div>
-                    <p class="paragraph">
-                      Body at vero eos et accusamus et iusto odio dignissimos
-                      ducimus qui blanditiis praesentium voluptatum deleniti
-                      atque corrupti quos dolores et quas molestias excepturi
-                      sint occaecati cupiditate non provident, similique sunt in
-                      culpa qui officia deserunt mollitia animi. Lorem ipsum
-                      dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-                      sadipscing elitr, sed diam.
-                    </p>
-                  </div>
-                  <div x-show=" active === 1">
-                    <div class="mb-65">
-                      <img src="assets//icons/comaa.svg" alt="" />
-                      <h4 class="text-32 mt-10 mb-12">Aman Mustermann</h4>
-                      <p>Head of Engineering, Musterfirma</p>
-                    </div>
-                    <p class="paragraph">
-                      Body at vero eos et accusamus et iusto odio dignissimos
-                      ducimus qui blanditiis praesentium voluptatum deleniti.
-                    </p>
-                  </div>
-                  <div x-show=" active === 2">
-                    <div class="mb-65">
-                      <img src="assets//icons/comaa.svg" alt="" />
-                      <h4 class="text-32 mt-10 mb-12">Sayad Mustermann</h4>
-                      <p>Head of Engineering, Musterfirma</p>
-                    </div>
-                    <p class="paragraph">
-                      Body at vero eos et accusamus et iusto odio dignissimos
-                      ducimus qui blanditiis praesentium voluptatum deleniti
-                      atque corrupti quos dolores et quas molestias excepturi
-                      sint occaecati cupiditate non provident, similique sunt
-                      in.
-                    </p>
+
+                    <p class="paragraph" x-text="slides[active].text"></p>
                   </div>
                 </div>
 
-                <div class="col-span-7 col-start-6 mt-40">
+                <!-- Indicators -->
+                <div class="md:col-span-7 md:col-start-6 lg:mt-40">
                   <div class="flex items-center gap-8">
-                    <button
-                      @click="active = 0"
-                      class="h-3 w-111 transition-all"
-                      :class="active === 0 ? 'bg-secondary' : 'bg-primary/20'"
-                    ></button>
-
-                    <button
-                      @click="active = 1"
-                      class="h-3 w-111 transition-all"
-                      :class="active === 1 ? 'bg-secondary' : 'bg-primary/20'"
-                    ></button>
-
-                    <button
-                      @click="active = 2"
-                      class="h-3 w-111 transition-all"
-                      :class="active === 2 ? 'bg-secondary' : 'bg-primary/20'"
-                    ></button>
+                    <template x-for="(slide,index) in slides" :key="index">
+                      <button
+                        @click="active = index"
+                        class="h-3 max-w-111 w-full transition-all duration-300"
+                        :class="active === index ? 'bg-secondary' : 'bg-primary'"
+                      ></button>
+                    </template>
                   </div>
 
                   <div class="mt-16">
                     <span
                       class="text-secondary font-semibold"
-                      x-text="String(active + 1).padStart(2, '0')"
+                      x-text="String(active + 1).padStart(2,'0')"
                     ></span>
-                    / 03
+                    /
+                    <span x-text="String(slides.length).padStart(2,'0')"></span>
                   </div>
                 </div>
               </div>
@@ -1779,88 +1579,41 @@
         </div>
       </section>
 
-      <section class="pt-sec bg-primary">
-        <div class="container">
-          <div class="Kontakt">
-            <div class="row space-y-47 cols_1_1 text-white">
-              <div class="col text-center md:text-start">
-                <div class="free_text">
-                  <div class="title flex items-center gap-8">
-                    <img
-                      src="./assets/icons/Title_icon.svg"
-                      alt=""
-                      class="w-4 h-15 shrink-0"
-                    />
-                    <span>Category</span>
-                  </div>
-                  <h2>Sprechen wir über deine Transformation.</h2>
-                  <h3>
-                    In einem unverbindlichen Erstgespräch klären wir
-                    Ausgangslage, Ziele und den nächsten sinnvollen Schritt.
-                  </h3>
-                </div>
-                <div class="free_text font-Literata">
-                  <div class="flex-col flex">
-                    <a href="">kontakt@tensoris.tech</a>
-                    <a href="">+49 (0) 201 987 654</a>
-                  </div>
-                  <div class="flex-col flex">
-                    <a href="">TENSORIS GmbH & Co. KG</a>
-                    <a href="">Ebertplatz 12, 50668</a>
-                  </div>
-                </div>
+      <!-- Now Work -->
+      <section class="mb-sec">
+        <div class="">
+          <div class="CTA element">
+            <div
+              class="py-47 lg:flex items-center w-full max-w-1200 mx-auto bg-primary text-white relative overflow-hidden"
+            >
+              <div class="lg:w-3/4 ms-sec free_text max-w-650">
+                <h2 class="text-40">
+                  Dein Vorhaben könnte die nächste Case Study sein.
+                </h2>
+                <p class="font-Literata">
+                  Bringen wir Komplexität in Bewegung.
+                </p>
               </div>
-              <div class="col">
-                <div class="col gap-30">
-                  <div class="col gap-20 md:gap-24">
-                    <input type="text" class="bg-white" placeholder="Name*" />
-                    <input
-                      type="email"
-                      class="bg-white"
-                      placeholder="E-Mail-Adresse*"
-                    />
-                    <input
-                      type="text"
-                      class="bg-white"
-                      placeholder="Unternehmen / Organisation"
-                    />
-                    <textarea
-                      placeholder="Message"
-                      rows="7"
-                      class="input resize-none text-primary px-20 py-14 text-sm leading-24 placeholder:text-gray bg-white"
-                    ></textarea>
-                  </div>
-                  <div class="space-y-20">
-                    <p class="text-14">
-                      * Die mit Stern markierten Felder sind Pflichtfelder
-                    </p>
 
-                    <label class="flex items-start gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        required
-                        class="mt-1 size-25 mr-10 accent-lime-400"
-                      />
+              <div class="w-1/4 relative flex items-center justify-center">
+                <div
+                  class="absolute inset-0 bg-primary xl:image-slant-left"
+                ></div>
 
-                      <span class="text-14">
-                        Ich habe die
-                        <a href="#" class="underline font-semibold"
-                          >Datenschutzerklärung</a
-                        >
-                        zur Kenntnis genommen und stimme zu, dass meine Angaben
-                        zur Beantwortung der Anfrage erhoben und gespeichert
-                        werden.
-                      </span>
-                    </label>
-                  </div>
-                </div>
-                <button class="btn btn-primary">Nachricht senden</button>
+                <button class="btn btn-primary relative z-10">
+                  Erstgespräch vereinbaren
+                </button>
               </div>
+              <div
+          class="glow -right-600 -top-900 h-1155 w-1468 hidden md:block"
+        ></div>
             </div>
           </div>
         </div>
+        
       </section>
     </main>
+
     <footer>
       <div class="pt-sec bg-primary text-white text-sm">
         <div class="container">

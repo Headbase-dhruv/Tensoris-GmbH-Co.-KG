@@ -92,7 +92,7 @@
     @apply mx-auto px-gutter;
   }
   .ctm_sec {
-    @apply relative z-1;
+    @apply relative z-1 overflow-hidden;
   }
   .text-h3-highlight :is(b, strong, span),
   .text-h4-highlight :is(b, strong, span) {
@@ -233,6 +233,20 @@
   .clip_path {
     clip-path: polygon(0 0, 30% 0, 20% 100%, 0% 100%);
   }
+  .glow {
+  position: absolute;
+  
+  border-radius: 9999px;
+
+  background: radial-gradient(
+    circle,
+    rgba(var(--secondary-rgb, 140, 255, 0), 0.3) 0%,
+    rgba(var(--secondary-rgb, 140, 255, 0), 0) 70%
+  );
+
+  filter: blur(64px);
+  pointer-events: none;
+}
 }
 
 @utility image-slant-left {
