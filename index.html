@@ -40,6 +40,7 @@
   <body>
     <header
       x-data="{ mobileMenu: false }"
+      x-effect="document.body.style.overflow = mobileMenu ? 'hidden' : ''"
       class="bg-primary text-white relative z-50"
     >
       <div
@@ -57,7 +58,6 @@
           <nav class="hidden xl:flex">
             <!-- <ul class="flex gap-25 2xl:gap-45 font-tabular justify-end my-26 relative"> -->
             <ul class="flex gap-25 2xl:gap-45 font-tabular justify-end">
-              <!-- Item 1: Transformation -->
               <li
                 x-data="{ open: false }"
                 @mouseenter="open = true"
@@ -66,10 +66,10 @@
               >
                 <a
                   href="#"
-                  class="flex items-center gap-2 transition-colors duration-200"
-                  :class="open ? 'text-secondary' : 'hover:text-secondary'"
+                  class="flex items-center gap-2"
+                  :class="open ? 'text-secondary' : ''"
                 >
-                  <span>Transformation</span>
+                  Leistungen
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"
@@ -85,35 +85,210 @@
                   </svg>
                 </a>
 
-                <!-- Invisible bridge wrapper using pt-4 so hover area is never lost -->
+                <!-- Mega Menu -->
                 <div
                   x-show="open"
                   x-transition
-                  class="absolute top-full right-0 pt-24 w-300 z-50"
+                  class="fixed left-0 w-full z-10"
                 >
                   <div
-                    class="bg-primary text-white shadow-2xl font-light *:px-20 *:py-12"
+                    class="w-full flex justify-center bg-primary/95 text-white"
                   >
-                    <a
-                      href="#"
-                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
-                      >Strategy</a
+                    <div
+                      class="grid grid-cols-12 pt-100 pb-44 container mx-0 md:px-50"
                     >
-                    <a
-                      href="#"
-                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
-                      >Execution</a
-                    >
-                    <a
-                      href="#"
-                      class="block px-6 py-4 border-b border-white/20 hover:text-secondary transition-colors"
-                      >Enablement</a
-                    >
-                    <a
-                      href="#"
-                      class="block px-6 py-4 hover:text-secondary transition-colors"
-                      >Assurance</a
-                    >
+                      <!-- Column 1 -->
+                      <div class="col-span-5 col border-r border-white/20">
+                        <h4 class="text-secondary mb-8 font-light text-14">
+                          Leistungsfelder
+                        </h4>
+
+                        <div class="grid grid-cols-2 gap-y-38">
+                          <a
+                            href="#"
+                            class="block hover:text-secondary font-light w-fit"
+                          >
+                            Cloud & Plattformen
+                            <span
+                              class="block text-12 font-normal font-Literata text-white"
+                              >Architektur bis Rollout</span
+                            >
+                          </a>
+
+                          <a
+                            href="#"
+                            class="block hover:text-secondary font-light w-fit"
+                          >
+                            Governance & Sicherheit
+                            <span
+                              class="block text-12 font-normal font-Literata text-white"
+                              >Klare Rollen, klare Prozesse</span
+                            >
+                          </a>
+
+                          <a
+                            href="#"
+                            class="block hover:text-secondary font-lighty w-fit"
+                          >
+                            Daten & KI
+                            <span
+                              class="block text-12 font-normal font-Literata text-white"
+                              >Vom Piloten in den Betrieb</span
+                            >
+                          </a>
+
+                          <a
+                            href="#"
+                            class="block hover:text-secondary font-light w-fit"
+                          >
+                            Organisation & Change
+                            <span
+                              class="block text-12 font-normal font-Literata text-white"
+                              >Verankert, nicht nur dokumentiert</span
+                            >
+                          </a>
+                        </div>
+                      </div>
+
+                      <!-- Column 2 -->
+                      <div
+                        x-data="AusdemBlog()"
+                        x-init="setInterval(() => {
+                                  active = (active + 1) % slides.length
+                                }, 3000)"
+                        class="col-span-4 max-w-250 mx-auto"
+                      >
+                        <h4 class="text-secondary mb-28 text-12 font-Literata">
+                          Aus dem Blog
+                        </h4>
+
+                        <!-- Card -->
+                        <div class="border border-white/20">
+                          <div
+                            class="ps-15 pr-30 py-14 space-y-14 min-h-160 transition-slow"
+                          >
+                            <p
+                              class="text-xs opacity-50"
+                              x-text="slides[active].date"
+                            ></p>
+
+                            <h5
+                              class="text-12 font-medium"
+                              x-text="slides[active].title"
+                            ></h5>
+
+                            <h5
+                              class="text-10 font-Literata"
+                              x-text="slides[active].text"
+                            ></h5>
+                          </div>
+
+                          <div class="border-t border-white/20 py-10 ps-15">
+                            <button
+                              class="text-10 font-medium flex items-center gap-4 group hover:text-secondary transition-slow"
+                            >
+                              Weiterlesen
+
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                class="group-hover:translate-x-4 transition-slow"
+                              >
+                                <path d="M5 12h14" />
+                                <path d="M15 8l4 4-4 4" />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+
+                        <!-- Indicators -->
+                        <div class="mt-20 max-w-200 mx-auto">
+                          <div class="flex gap-6">
+                            <template
+                              x-for="(slide,index) in slides"
+                              :key="index"
+                            >
+                              <button
+                                @click="active = index"
+                                class="h-2 flex-1 transition-slow"
+                                :class="active === index ? 'bg-secondary' : 'bg-white'"
+                              ></button>
+                            </template>
+                          </div>
+
+                          <div class="text-10 mt-6">
+                            <span
+                              class="text-secondary"
+                              x-text="String(active + 1).padStart(2,'0')"
+                            ></span>
+                            /
+                            <span
+                              x-text="String(slides.length).padStart(2,'0')"
+                            ></span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Column 3 -->
+                      <div
+                        x-data="Testimonials()"
+                        class="col-span-3 border-l border-white/20 pl-92 pr-32"
+                      >
+                        <div x-transition.opacity.duration.500ms>
+                          <div class="space-y-6 pb-20">
+                            <img
+                              src="assets/icons/comaa.svg"
+                              alt="Komma-Symbol"
+                              class="h-24"
+                            />
+
+                            <h5
+                              class="text-16 font-grotesk"
+                              x-text="slides[active].name"
+                            ></h5>
+
+                            <p class="text-10" x-text="slides[active].role"></p>
+                          </div>
+
+                          <p
+                            class="text-10 font-Literata leading-relaxed"
+                            x-text="slides[active].text"
+                          ></p>
+                        </div>
+
+                        <!-- Indicators -->
+                        <div class="mt-20 mr-20">
+                          <div class="flex gap-6">
+                            <template
+                              x-for="(slide,index) in slides"
+                              :key="index"
+                            >
+                              <button
+                                @click="active = index"
+                                class="h-2 flex-1 transition-slow"
+                                :class="active === index ? 'bg-secondary' : 'bg-white'"
+                              ></button>
+                            </template>
+                          </div>
+
+                          <div class="text-10 mt-6">
+                            <span
+                              class="text-secondary"
+                              x-text="String(active + 1).padStart(2,'0')"
+                            ></span>
+                            /
+                            <span
+                              x-text="String(slides.length).padStart(2,'0')"
+                            ></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </li>
@@ -316,7 +491,7 @@
           <!-- Mobile Button -->
           <button
             @click="mobileMenu = !mobileMenu"
-            class="flex justify-center xl:hidden focus:outline-none w-[26px] h-[24px]"
+            class="flex justify-center xl:hidden focus:outline-none w-26 h-24"
             aria-label="Toggle Menu"
           >
             <svg
@@ -377,15 +552,16 @@
       <!-- Dropdown Menu -->
       <div
         x-show="mobileMenu"
-        x-transition:enter="transition ease-out duration-500"
-        x-transition:enter-start="-translate-y-full opacity-0"
-        x-transition:enter-end="translate-y-0 opacity-300"
-        x-transition:leave="transition ease-out  duration-500"
-        x-transition:leave-start="translate-y-0 opacity-100"
-        x-transition:leave-end="-translate-y-full opacity-0"
-        class="absolute top-full left-0 w-full bg-primary z-40"
+        x-cloak
+        x-transition:enter="transform transition ease-out duration-300"
+        x-transition:enter-start="translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transform transition ease-in duration-300"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="translate-x-full"
+        class="fixed inset-y-0 top-80 lg:top-60 right-0 w-[85%] max-w-500 max-w-420px bg-primary z-50 overflow-y-auto"
       >
-        <div x-data="{ active: null }" class="container">
+        <div x-data="{ active: null }" class="container py-14 md:py-20">
           <div class="border-b border-white/20">
             <button
               @click="active = active === 1 ? null : 1"
@@ -544,7 +720,132 @@
             </div>
           </div>
 
-          <button class="btn-transparent my-25 w-fit">Kontakt</button>
+          <button class="btn-transparent mt-25 w-fit">Kontakt</button>
+
+          <div
+            x-data="AusdemBlog()"
+            x-init="setInterval(() => {
+                    active = (active + 1) % slides.length
+                    }, 3000)"
+            class="my-50"
+          >
+            <h4 class="text-secondary mb-28 text-12 font-Literata">
+              Aus dem Blog
+            </h4>
+
+            <!-- Card -->
+            <div class="border border-white/20">
+              <div
+                class="ps-15 pr-30 py-10 md:py-14 space-y-14 min-h-160 transition-slow"
+              >
+                <p class="text-10 opacity-50" x-text="slides[active].date"></p>
+
+                <h5
+                  class="text-12 font-medium"
+                  x-text="slides[active].title"
+                ></h5>
+
+                <h5
+                  class="text-10 font-Literata"
+                  x-text="slides[active].text"
+                ></h5>
+              </div>
+
+              <div class="border-t border-white/20 py-10 ps-15">
+                <button
+                  class="text-10 font-medium flex items-center gap-4 group hover:text-secondary transition-slow"
+                >
+                  Weiterlesen
+
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    class="group-hover:translate-x-4 transition-slow"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M15 8l4 4-4 4" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Indicators -->
+            <div class="mt-20 max-w-200">
+              <div class="flex gap-6">
+                <template x-for="(slide,index) in slides" :key="index">
+                  <button
+                    @click="active = index"
+                    class="h-2 flex-1 transition-slow"
+                    :class="active === index ? 'bg-secondary' : 'bg-white'"
+                  ></button>
+                </template>
+              </div>
+
+              <div class="text-10 mt-6">
+                <span
+                  class="text-secondary"
+                  x-text="String(active + 1).padStart(2,'0')"
+                ></span>
+                /
+                <span x-text="String(slides.length).padStart(2,'0')"></span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            x-data="Testimonials()"
+            class="lg:border-l border-white/20 lg:pl-92 pr-32 pb-32"
+          >
+            <div x-transition.opacity.duration.500ms>
+              <div class="space-y-6 pb-20">
+                <img
+                  src="assets/icons/comaa.svg"
+                  alt="Komma-Symbol"
+                  class="h-24"
+                />
+
+                <h5
+                  class="text-16 font-grotesk"
+                  x-text="slides[active].name"
+                ></h5>
+
+                <p class="text-10" x-text="slides[active].role"></p>
+              </div>
+
+              <p
+                class="text-10 font-Literata leading-relaxed"
+                x-text="slides[active].text"
+              ></p>
+            </div>
+
+            <!-- Indicators -->
+            <div class="mt-20 mr-20">
+              <div class="flex gap-6">
+                <template x-for="(slide,index) in slides" :key="index">
+                  <button
+                    @click="active = index"
+                    class="h-2 flex-1 transition-slow"
+                    :class="active === index ? 'bg-secondary' : 'bg-white'"
+                  ></button>
+                </template>
+              </div>
+
+              <div class="text-10 mt-6">
+                <span
+                  class="text-secondary"
+                  x-text="String(active + 1).padStart(2,'0')"
+                ></span>
+                /
+                <span x-text="String(slides.length).padStart(2,'0')"></span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </header>
@@ -617,7 +918,6 @@
         </div>
       </section>
 
-
       <!--  -->
       <section class="">
         <div class="container xl:mx-auto lg:pr-0 mx-0">
@@ -640,7 +940,11 @@
                   </h3>
                 </div>
                 <div class="relative lg:hidden min-h-200">
-                  <img src="assets/images/tensoris.webp" alt="" class="w-full h-full object-cover absolute" />
+                  <img
+                    src="assets/images/tensoris.webp"
+                    alt=""
+                    class="w-full h-full object-cover absolute"
+                  />
                 </div>
                 <div class="space-y-30">
                   <p class="font-Literata free_text">
@@ -660,7 +964,7 @@
                       molestias
                     </li>
                   </ul>
-                  <p class="font-Literata mt-5 free_text gap-0 ">
+                  <p class="font-Literata mt-5 free_text gap-0">
                     <span
                       ><img
                         src="assets/icons/comaa.svg"
@@ -703,7 +1007,7 @@
           </div>
         </div>
       </section>
-      
+
       <!--  -->
       <section class="">
         <div class="container xl:mx-auto lg:pl-0 ml-0">
@@ -736,7 +1040,11 @@
                   </h3>
                 </div>
                 <div class="relative lg:hidden min-h-200">
-                  <img src="assets/images/tensoris.webp" alt="" class="w-full h-full object-cover absolute" />
+                  <img
+                    src="assets/images/tensoris.webp"
+                    alt=""
+                    class="w-full h-full object-cover absolute"
+                  />
                 </div>
                 <div class="space-y-30">
                   <p class="font-Literata free_text">
@@ -756,7 +1064,7 @@
                       molestias
                     </li>
                   </ul>
-                  <p class="font-Literata mt-5 free_text gap-0 ">
+                  <p class="font-Literata mt-5 free_text gap-0">
                     <span
                       ><img
                         src="assets/icons/comaa.svg"
@@ -855,7 +1163,7 @@
           </div>
         </div>
       </section>
-      
+
       <section class="my-sec">
         <div class="container">
           <div class="text-only">
@@ -976,6 +1284,65 @@
                   <path d="M9 6l6 6l-6 6" />
                 </svg>
               </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Now Work -->
+      <section>
+        <div class="">
+          <div class="CTA element">
+            <div
+              class="py-47 lg:flex items-center w-full max-w-1200 mx-auto border"
+            >
+              <div class="lg:w-3/4 ms-sec free_text max-w-650">
+                <h2 class="text-40">
+                  Dein Vorhaben könnte die nächste Case Study sein.
+                </h2>
+                <p class="font-Literata">
+                  Bringen wir Komplexität in Bewegung.
+                </p>
+              </div>
+
+              <div class="w-1/4 relative flex items-center justify-center">
+                <div
+                  class="absolute inset-0 bg-white xl:image-slant-left"
+                ></div>
+
+                <button class="btn btn-primary relative z-10">
+                  Erstgespräch vereinbaren
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Using grid -->
+      <section>
+        <div class="CTA element">
+          <div
+            class="flex flex-col md:flex-row w-full justify-between max-w-1200 mx-auto border overflow-hidden"
+          >
+            <div class="w-full md:w-2/3 py-47 xl:ms-sec free_text max-w-650">
+              <h2 class="text-40">
+                Dein Vorhaben könnte die nächste Case Study sein.
+              </h2>
+
+              <button class="btn btn-primary">Erstgespräch vereinbaren</button>
+            </div>
+
+            <div
+              class="relative flex-1 w-full md:w-1/3 min-h-200 md:min-h-auto"
+            >
+              <div
+                class="absolute inset-0 bg-white -right-0.5 xl:image-slant-left z-10 pointer-events-none"
+              ></div>
+              <img
+                src="assets/images/tensoris.webp"
+                alt=""
+                class="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -1260,8 +1627,12 @@
                   </div>
                 </div>
               </div>
-              <div class="border-t border-primary/20 pt-20 md:pt-30 xl:pt-40 flex items-end justify-end">
-                <button class="btn btn-primary mr-0">Zu allen Blogbeiträgen</button>
+              <div
+                class="border-t border-primary/20 pt-20 md:pt-30 xl:pt-40 flex items-end justify-end"
+              >
+                <button class="btn btn-primary mr-0">
+                  Zu allen Blogbeiträgen
+                </button>
               </div>
             </div>
           </div>
@@ -1559,7 +1930,6 @@
           </div>
         </div>
       </section>
-
     </main>
     <footer>
       <div class="pt-sec bg-primary text-white text-sm">

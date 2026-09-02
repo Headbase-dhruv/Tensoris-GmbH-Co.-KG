@@ -64,8 +64,11 @@
   /* --text-h2--line-height: clamp(3.875rem, 4.15rem + -1.375vw, 2.5rem); */
 
   --text-h3: clamp(1rem, 0.9071rem + 0.381vw, 1.25rem);
+  --text-40: 40px;
   --text-18: 18px;
   --text-14: 14px;
+  --text-12: 12px;
+  --text-10: 10px;
 }
 
 @layer base {
@@ -250,7 +253,7 @@
 @utility btn-transparent {
   @apply inline-block text-center py-6 px-20 text-sm font-semibold
          transition-slow border-[0.5px] border-secondary
-         w-full md:w-fit
+         w-full md:w-fit skew-x-[-10deg]
          text-secondary
          hover:bg-secondary
          hover:text-primary
