@@ -252,10 +252,10 @@
 }
 
 @utility image-slant-left {
-  clip-path: polygon(0 0, 35% 0, 22% 100%, 0% 100%);
+  clip-path: polygon(0 0, 30% 0, 20% 100%, 0% 100%);
 }
 @utility image-slant-right {
-  clip-path: polygon(65% 0, 100% 0, 100% 100%, 78% 100%);
+  clip-path: polygon(70% 0, 100% 0, 100% 100%, 85% 100%);
 }
 @utility transition-slow {
   transition: all 0.3s ease;

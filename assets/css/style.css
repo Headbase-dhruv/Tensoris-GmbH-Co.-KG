@@ -257,6 +257,12 @@
   .bottom-0 {
     bottom: 0px;
   }
+  .-left-0 {
+    left: 0px;
+  }
+  .-left-0\.5 {
+    left: calc(var(--spacing) * -0.5);
+  }
   .-left-400 {
     left: calc(var(--spacing) * -400);
   }
@@ -338,6 +344,9 @@
   .my-50 {
     margin-block: calc(var(--spacing) * 50);
   }
+  .my-auto {
+    margin-block: auto;
+  }
   .my-sec {
     margin-block: var(--spacing-sec);
   }
@@ -415,9 +424,6 @@
   }
   .mb-sec {
     margin-bottom: var(--spacing-sec);
-  }
-  .ml-0 {
-    margin-left: 0px;
   }
   .ml-auto {
     margin-left: auto;
@@ -547,6 +553,9 @@
   .h-\[24px\] {
     height: 24px;
   }
+  .h-fit {
+    height: fit-content;
+  }
   .h-full {
     height: 100%;
   }
@@ -562,11 +571,29 @@
   .max-h-800 {
     max-height: calc(var(--spacing) * 800);
   }
+  .max-h-\[0\%\] {
+    max-height: 0%;
+  }
+  .max-h-\[50\%\] {
+    max-height: 50%;
+  }
+  .max-h-\[90\%\] {
+    max-height: 90%;
+  }
+  .max-h-\[90\] {
+    max-height: 90;
+  }
+  .max-h-fit {
+    max-height: fit-content;
+  }
   .min-h-160 {
     min-height: calc(var(--spacing) * 160);
   }
   .min-h-200 {
     min-height: calc(var(--spacing) * 200);
+  }
+  .min-h-fit {
+    min-height: fit-content;
   }
   .w-4 {
     width: calc(var(--spacing) * 4);
@@ -607,20 +634,8 @@
   .w-\[26px\] {
     width: 26px;
   }
-  .w-\[80\%\] {
-    width: 80%;
-  }
-  .w-\[80\] {
-    width: 80;
-  }
   .w-\[85\%\] {
     width: 85%;
-  }
-  .w-\[90\%\] {
-    width: 90%;
-  }
-  .w-\[90\] {
-    width: 90;
   }
   .w-fit {
     width: fit-content;
@@ -1423,6 +1438,9 @@
     .not-lg\:py-40 {
       padding-block: calc(var(--spacing) * 40);
     }
+    .not-lg\:pl-gutter {
+      padding-left: var(--spacing-gutter);
+    }
   }
   @media (hover: hover) {
     .group-hover\:translate-x-4:is(:where(.group):hover *) {
@@ -1706,14 +1724,17 @@
     .lg\:pr-0 {
       padding-right: 0px;
     }
+    .lg\:pr-gutter {
+      padding-right: var(--spacing-gutter);
+    }
     .lg\:pb-60 {
       padding-bottom: calc(var(--spacing) * 60);
     }
-    .lg\:pl-0 {
-      padding-left: 0px;
-    }
     .lg\:pl-92 {
       padding-left: calc(var(--spacing) * 92);
+    }
+    .lg\:pl-gutter {
+      padding-left: var(--spacing-gutter);
     }
     .lg\:text-20 {
       font-size: var(--text-20);
@@ -1722,10 +1743,10 @@
       font-size: var(--text-40);
     }
     .lg\:image-slant-left {
-      clip-path: polygon(0 0, 35% 0, 22% 100%, 0% 100%);
+      clip-path: polygon(0 0, 30% 0, 20% 100%, 0% 100%);
     }
     .lg\:image-slant-right {
-      clip-path: polygon(65% 0, 100% 0, 100% 100%, 78% 100%);
+      clip-path: polygon(70% 0, 100% 0, 100% 100%, 85% 100%);
     }
   }
   @media (width >= 1200px) {
@@ -1803,10 +1824,7 @@
       padding-left: calc(var(--spacing) * 92);
     }
     .xl\:image-slant-left {
-      clip-path: polygon(0 0, 35% 0, 22% 100%, 0% 100%);
-    }
-    .xl\:image-slant-right {
-      clip-path: polygon(65% 0, 100% 0, 100% 100%, 78% 100%);
+      clip-path: polygon(0 0, 30% 0, 20% 100%, 0% 100%);
     }
   }
   @media (width >= 1400px) {
@@ -1824,6 +1842,9 @@
     }
     .\32 xl\:gap-x-90 {
       column-gap: calc(var(--spacing) * 90);
+    }
+    .\32 xl\:gap-x-100 {
+      column-gap: calc(var(--spacing) * 100);
     }
   }
 }
