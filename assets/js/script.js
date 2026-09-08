@@ -193,32 +193,171 @@ function TestimonialsSlider() {
 }
 
 function NewsCards() {
-    return {
-        posts: [
-            {
-                date: "18 AUGUST 2026",
-                image: "assets/images/tensoris.webp",
-                title: "Headline vero eos et accusamus et iusto odio dignissimos qui.",
-                description: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati non."
-            },
-            {
-                date: "17 AUGUST 2026",
-                image: "assets/images/tensoris.webp",
-                title: "Digitalisierung erfolgreich gestalten.",
-                description: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis deleniti atque corrupti quos dolores."
-            },
-            {
-                date: "15 AUGUST 2026",
-                image: "assets/images/tensoris.webp",
-                title: "Cloud Strategien für moderne Unternehmen.",
-                description: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis deleniti atque corrupti quos dolores."
-            },
-            {
-                date: "12 AUGUST 2026",
-                image: "assets/images/tensoris.webp",
-                title: "KI im Unternehmenseinsatz.",
-                description: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis deleniti atque corrupti quos dolores."
-            }
-        ]
-    };
+  return {
+    posts: [
+      {
+        date: "18 AUGUST 2026",
+        image: "assets/images/tensoris.webp",
+        title: "Headline vero eos et accusamus et iusto odio dignissimos qui.",
+        description:
+          "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati non.",
+      },
+      {
+        date: "17 AUGUST 2026",
+        image: "assets/images/tensoris.webp",
+        title: "Digitalisierung erfolgreich gestalten.",
+        description:
+          "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis deleniti atque corrupti quos dolores.",
+      },
+      {
+        date: "15 AUGUST 2026",
+        image: "assets/images/tensoris.webp",
+        title: "Cloud Strategien für moderne Unternehmen.",
+        description:
+          "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis deleniti atque corrupti quos dolores.",
+      },
+      {
+        date: "12 AUGUST 2026",
+        image: "assets/images/tensoris.webp",
+        title: "KI im Unternehmenseinsatz.",
+        description:
+          "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis deleniti atque corrupti quos dolores.",
+      },
+    ],
+  };
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  new Swiper(".heroSwiper", {
+    loop: true,
+    speed: 1200,
+    effect: "fade",
+  });
+  // new Swiper(".heroSwiper", {
+  //   loop: true,
+  //   speed: 1000,
+  //   navigation: {
+  //     nextEl: ".hero-next",
+  //     prevEl: ".hero-prev",
+  //   },
+  // });
+});
+
+document.addEventListener("alpine:init", () => {
+  Alpine.data("heroSlider", () => ({
+    slides: window.heroSliderData || [],
+    activeIndex: 0, // the slide Swiper is currently on
+    displayIndex: 0, // the slide whose text is currently shown (lags activeIndex during fade-out)
+    textVisible: true,
+    fadeDuration: 300, // ms — keep in sync with the .transition-slow CSS duration
+    swiper: null,
+
+    init() {
+      // Wait until Alpine has rendered the x-for slides before mounting Swiper
+      this.$nextTick(() => {
+        this.swiper = new Swiper(this.$refs.swiperEl, {
+          loop: this.slides.length > 1,
+          effect: "fade",
+          autoplay: {
+            delay: 3000, // wait 3 seconds between slides
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true, // optional
+          },
+          fadeEffect: { crossFade: true },
+          navigation: {
+            nextEl: ".hero-next",
+            prevEl: ".hero-prev",
+          },
+          on: {
+            slideChange: (swiper) => {
+              // Keep the overlay text in sync with whichever slide is active
+              this.activeIndex = swiper.realIndex;
+            },
+          },
+        });
+      });
+
+      // Crossfade the overlay text: fade old text out, THEN swap it, THEN fade in.
+      // (x-text updates instantly, so we delay the data swap until the fade-out finishes.)
+      this.$watch("activeIndex", () => {
+        this.textVisible = false;
+        setTimeout(() => {
+          this.displayIndex = this.activeIndex;
+          this.textVisible = true;
+        }, this.fadeDuration);
+      });
+    },
+
+    // Convenience getter used by the overlay markup — bound to displayIndex, not activeIndex
+    get currentSlide() {
+      return this.slides[this.displayIndex] || {};
+    },
+    goToSlide(index) {
+      if (!this.swiper) return;
+
+      if (this.swiper.params.loop) {
+        this.swiper.slideToLoop(index);
+      } else {
+        this.swiper.slideTo(index);
+      }
+    },
+  }));
+});
+
+window.heroSliderData = [
+  {
+    image: "assets/images/tensoris.webp",
+    category: "Category",
+    headline: "Headline vero accusamus et.",
+    subtitle:
+      "Subtitle at vero eos et accusamus iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.",
+    buttonText: "Primärer Absprung",
+    buttonLink: "#",
+  },
+  {
+    image: "assets/images/Header.webp",
+    category: "Another Category",
+    headline: "Headline vero accusamus et.",
+    subtitle:
+      "Subtitle at vero eos et accusamus iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.",
+    buttonText: "Discover More",
+    buttonLink: "#",
+  },
+  {
+    image: "assets/images/TestimonialsMobile.webp",
+    category: "Another Category",
+    headline: "Headline vero accusamus et.",
+    subtitle:
+      "Subtitle at vero eos et accusamus iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.",
+    buttonText: "Discover More",
+    buttonLink: "#",
+  },
+  // Add as many slide objects as you need — the loop below handles the rest.
+];
+
+function HeroSlider() {
+  return {
+    slides: [
+      { image: "assets/images/Header.webp" },
+      { image: "assets/images/tensoris.webp" },
+      { image: "assets/images/TestimonialsMobile.webp" },
+    ],
+
+    init() {
+      this.$nextTick(() => {
+        new Swiper(".heroSwiper", {
+          loop: true,
+          effect: "fade",
+          speed: 1000,
+
+          autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+          },
+        });
+      });
+    },
+  };
+}
+
+window.HeroSlider = HeroSlider;

@@ -261,7 +261,7 @@
 
 @utility btn {
   @apply inline-block text-center py-10 px-20 text-sm font-semibold
-         transition-slow border-[0.5px] w-full md:w-fit
+         transition-slow border-[0.5px] w-full sm:w-fit
          skew-x-[-10deg];
 }
 @utility btn-transparent {

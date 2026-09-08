@@ -13,8 +13,10 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
     <script defer src="assets/js/alpine.js"></script>
+    <script defer src="assets/js/swiper-bundle.min.js"></script>
 
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/swiper.css" />
 
     <title>Tensoris</title>
   </head>
@@ -856,30 +858,43 @@
     </header>
 
     <main>
-      <section class="">
-        <div class="Header relative h-screen max-h-800 py-sec hidden sm:block">
-          <img
-            src="assets/images/Header.webp"
-            alt=""
-            class="absolute inset-0 w-full h-full object-cover"
-          />
+      <section>
+        <div x-data="HeroSlider()" class="swiper heroSwiper">
+          <div class="swiper-wrapper">
+            <template x-for="(slide, index) in slides" :key="index">
+              <div class="swiper-slide">
+                <div class="relative h-screen max-h-800 py-sec hidden sm:block">
+                  <img
+                    :src="slide.image"
+                    :alt="slide.title"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
 
-          <div
-            class="container text-white relative z-10 flex items-end h-full pb-20"
-          >
-            <div class="col">
-              <div class="free_text max-w-440">
-                <h1>Lorem ipsum dolor sit amet.</h1>
-                <h3>
-                  At vero eos et accusam et justo duo dolores et ea rebum stet
-                  clita kasd.
-                </h3>
+                  <div
+                    class="container text-white relative z-10 flex items-end h-full pb-20"
+                  >
+                    <div class="col">
+                      <div class="free_text max-w-440">
+                        <h1>Lorem ipsum dolor sit amet.</h1>
+                        <h3>
+                          At vero eos et accusam et justo duo dolores et ea
+                          rebum stet clita kasd.
+                        </h3>
+                      </div>
+
+                      <div class="flex flex-col md:flex-row gap-12 md:gap-24">
+                        <button class="btn btn-primary">
+                          Primärer Absprung
+                        </button>
+                        <button class="btn btn-secondary">
+                          Sekundärer Absprung
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="flex flex-col md:flex-row gap-12 md:gap-24">
-                <button class="btn btn-primary">Primärer Absprung</button>
-                <button class="btn btn-secondary">Sekundärer Absprung</button>
-              </div>
-            </div>
+            </template>
           </div>
         </div>
         <div class="sm:hidden container py-sec">
@@ -926,8 +941,8 @@
       <section class="my-sec">
         <div class="container">
           <div class="text">
-            <div class="grid lg:grid-cols-2 gap-sec">
-              <div class="free_text">
+            <div class="grid lg:grid-cols-2 gap-60">
+              <div class="free_text max-w-480 not-md:mx-auto">
                 <div class="title flex gap-8">
                   <img
                     src="./assets/icons/Title_icon.svg"
@@ -936,14 +951,10 @@
                   />
                   <span>Category</span>
                 </div>
-                <h2>
-                  Headline vero eos et dolore magna accusamus et iusto vero eos
-                  et.
-                </h2>
-                <h3 class="max-w-740 mx-auto">
-                  Subtitle at vero eos et accusamus et iusto odio dignissimos
-                  ducimus qui blanditiis praesentium voluptatum deleniti atque
-                  corrupti quos dolores et.
+                <h2>Headline vero eos et accusam et duo.</h2>
+                <h3 >
+                  Subtitle at vero eos et accusamus et iusto odio ducimus qui
+                  blanditiis praesentium voluptatum.
                 </h3>
               </div>
               <div class="free_text lg:py-18 2xl:w-[90%]">
@@ -979,88 +990,90 @@
 
       <!-- Image + Text -->
       <section class="">
-        <div class="container xl:mx-auto lg:pl-0 lg:ml-0">
-          <div class="nur_text">
-            <div class="row cols_1_1">
-              <div class="col relative hidden lg:block">
-                <div
-                  class="absolute inset-0 bg-white -right-0.5 xl:image-slant-right"
-                ></div>
-                <img
-                  src="assets/images/woman.webp"
-                  alt=""
-                  class="h-full inset-0"
-                />
-              </div>
-              <div class="col gap-25 md:gap-45 py-62 xl:max-w-570">
-                <div class="free_text">
-                  <div class="title flex items-center gap-8">
-                    <img
-                      src="./assets/icons/Title_icon.svg"
-                      alt=""
-                      class="w-4 h-15 shrink-0"
-                    />
-                    <span>Category</span>
-                  </div>
-                  <h2>Headline vero eos et accusamus et iusto.</h2>
-                  <h3>
-                    Subtitle at vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis praesentium et.
-                  </h3>
-                </div>
-                <div class="relative lg:hidden min-h-200">
+        <div class="not-lg:container mx-auto not-lg:px-gutter">
+          <div class="max-w-1920 mx-auto">
+            <div class="nur_text">
+              <div class="grid grid-cols-1 lg:grid-cols-2 2xl:gap-x-90">
+                <div class="col relative hidden lg:block">
+                  <div
+                    class="absolute inset-0 bg-white -right-0.5 lg:image-slant-right"
+                  ></div>
                   <img
-                    src="assets/images/tensoris.webp"
+                    src="assets/images/leftSec.webp"
                     alt=""
-                    class="w-full h-full object-cover absolute"
+                    class="h-full inset-0"
                   />
                 </div>
-                <div class="space-y-30">
-                  <p class="font-Literata free_text">
-                    Body at vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas molestias excepturi sint
-                    occaecati cupiditate non provident, similique sunt in culpa
-                    qui officia deserunt mollitia animi.
-                  </p>
-                  <ul class="ctm_list">
-                    <li>
-                      Voluptatum deleniti atque corrupti quos dolores et quas
-                      molestias
-                    </li>
-                    <li>
-                      Voluptatum deleniti atque corrupti quos dolores et quas
-                      molestias
-                    </li>
-                  </ul>
-                  <p class="font-Literata mt-5 free_text gap-0">
-                    <span
-                      ><img
-                        src="assets/icons/comaa.svg"
+                <div class="col gap-25 md:gap-45 py-60 xl:max-w-570">
+                  <div class="free_text">
+                    <div class="title flex items-center gap-8">
+                      <img
+                        src="./assets/icons/Title_icon.svg"
                         alt=""
-                        class="mx-auto md:mx-0"
-                    /></span>
-                    Body at vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas molestias.”
+                        class="w-4 h-15 shrink-0"
+                      />
+                      <span>Category</span>
+                    </div>
+                    <h2>Headline vero eos et accusamus et iusto.</h2>
+                    <h3>
+                      Subtitle at vero eos et accusamus et iusto odio
+                      dignissimos ducimus qui blanditiis praesentium et.
+                    </h3>
+                  </div>
+                  <div class="relative lg:hidden h-400 not-md:h-200">
+                    <img
+                      src="assets/images/tensoris.webp"
+                      alt=""
+                      class="w-full h-full object-cover absolute"
+                    />
+                  </div>
+                  <div class="space-y-30">
+                    <p class="font-Literata free_text">
+                      Body at vero eos et accusamus et iusto odio dignissimos
+                      ducimus qui blanditiis praesentium voluptatum deleniti
+                      atque corrupti quos dolores et quas molestias excepturi
+                      sint occaecati cupiditate non provident, similique sunt in
+                      culpa qui officia deserunt mollitia animi.
+                    </p>
+                    <ul class="ctm_list">
+                      <li>
+                        Voluptatum deleniti atque corrupti quos dolores et quas
+                        molestias
+                      </li>
+                      <li>
+                        Voluptatum deleniti atque corrupti quos dolores et quas
+                        molestias
+                      </li>
+                    </ul>
+                    <p class="font-Literata mt-5 free_text gap-0">
+                      <span
+                        ><img
+                          src="assets/icons/comaa.svg"
+                          alt=""
+                          class="mx-auto md:mx-0"
+                      /></span>
+                      Body at vero eos et accusamus et iusto odio dignissimos
+                      ducimus qui blanditiis praesentium voluptatum deleniti
+                      atque corrupti quos dolores et quas molestias.”
+                    </p>
+                  </div>
+                  <div class="md:mt-20">
+                    <div class="flex flex-col sm:flex-row gap-12 md:gap-16">
+                      <button class="btn btn-primary">Primärer Absprung</button>
+                      <button class="btn btn-secondary">
+                        Sekundärer Absprung
+                      </button>
+                    </div>
+                  </div>
+                  <p
+                    class="font-Literata text-[#01112066] text-sm text-center sm:text-start"
+                  >
+                    Voluptatum deleniti atque corrupti quos dolores et quas
+                    molestias excepturi sint occaecati cupiditate non provident,
+                    similique sunt in culpa qui officia deserunt mollitia animi
+                    fuga.
                   </p>
                 </div>
-                <div class="md:mt-20">
-                  <div class="flex flex-col md:flex-row gap-12 md:gap-16">
-                    <button class="btn btn-primary">Primärer Absprung</button>
-                    <button class="btn btn-secondary">
-                      Sekundärer Absprung
-                    </button>
-                  </div>
-                </div>
-                <p
-                  class="font-Literata text-[#01112066] text-sm text-center sm:text-start"
-                >
-                  Voluptatum deleniti atque corrupti quos dolores et quas
-                  molestias excepturi sint occaecati cupiditate non provident,
-                  similique sunt in culpa qui officia deserunt mollitia animi
-                  fuga.
-                </p>
               </div>
             </div>
           </div>
@@ -1068,7 +1081,7 @@
       </section>
 
       <!-- Cemter text -->
-      <section class="py-sec bg-primary text-white ctm_sec">
+      <section class="ctm_sec py-sec bg-primary text-white">
         <div class="container">
           <div class="text-only">
             <div class="col items-center text-center max-w-980 mx-auto w-full">
@@ -1092,7 +1105,7 @@
                 </h3>
               </div>
               <div
-                class="flex w-full justify-center flex-col md:flex-row gap-12 md:gap-24"
+                class="flex w-full justify-center flex-col sm:flex-row gap-12 md:gap-24"
               >
                 <button class="btn btn-primary">Primärer Absprung</button>
                 <button class="btn bg-white text-primary">
@@ -1179,90 +1192,135 @@
         </div>
       </section>
 
-      <!--------------- Work ---------------->
-      <section>
-        <div class="Image-Slide hidden 2xl:block">
+      <!-- Slider --- working -->
+      <section class="ctm_sec">
+        <div class="category Slider">
           <div
-            class="relative xl:h-720 max-w-1920 py-sec overflow-hidden mx-auto"
+            class="text-white bg-primary sm:bg-transparent mx-auto max-w-1920"
           >
-            <!-- saider-image -->
-            <div class="hidden xl:block xl:absolute inset-0">
-              <img
-                src="assets/images/tensoris.webp"
-                alt=""
-                class="w-full h-full object-cover object-top"
-              />
-            </div>
-            <!-- Back  -->
-            <div
-              class="xl:absolute inset-0 bg-primary/90 text-white border-r-8 container max-w-1920 xl:px-62 xl:mx-0 row xl:gap-0"
-              style="clip-path: polygon(0 0, 40% 0, 35% 100%, 0% 100%)"
-            >
-              <!-- contente  -->
-              <div class="xl:absolute inset-0 h-full w-full md:px-62 py-72">
-                <div class="free_text xl:max-w-370">
+            <div class="container sm:px-0 sm:mx-0 max-w-1920">
+              <div
+                x-data="heroSlider()"
+                class="py-40 sm:py-0 relative flex flex-col gap-60"
+              >
+                <!-- contant text -->
+                <div
+                  class="sm:absolute left-0 top-0 z-10 h-full sm:w-[50%] lg:w-[40%] bg-primary/90 text-white sm:[clip-path:polygon(0_0,100%_0,85%_100%,0%_100%)]"
+                >
                   <div
-                    class="title flex items-center text-center md:text-start gap-8"
+                    class="h-full flex flex-col sm:px-40 lg:px-50 xl:px-62 sm:py-50 lg:py-72"
                   >
-                    <img
-                      src="./assets/icons/Title_icon.svg"
-                      alt=""
-                      class="w-4 h-15 shrink-0"
-                    />
-                    <span>Category</span>
+                    <div
+                      class="free_text not-md:free_text_center sm:max-w-410 transition-slow"
+                      :class="textVisible ? 'opacity-100' : 'opacity-0'"
+                    >
+                      <div class="title flex items-center gap-8">
+                        <img
+                          src="./assets/icons/Title_icon.svg"
+                          alt=""
+                          class="w-4 h-15 shrink-0"
+                        />
+                        <span>Category</span>
+                      </div>
+
+                      <h2 x-text="currentSlide.headline"></h2>
+                      <h3 x-text="currentSlide.subtitle"></h3>
+
+                      <button class="btn btn-primary mt-12 sm:mt-32">
+                        Primärer Absprung
+                      </button>
+                    </div>
                   </div>
-                  <h2>Headline vero eos et accusamus et iusto.</h2>
-                  <h3>
-                    Subtitle at vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et. Subtitle at vero eos et accusamus
-                    et iusto odio dignissimos ducimus qui blanditiis praesentium
-                    voluptatum deleniti atque corrupti quos.
-                  </h3>
                 </div>
-                <button class="btn btn-primary md:mt-50">
-                  Primärer Absprung
-                </button>
+                <!-- Image -->
+                <div>
+                  <div
+                    x-ref="swiperEl"
+                    class="relative h-550 sm:h-520 lg:h-600 xl:h-720"
+                  >
+                    <div
+                      class="swiper-wrapper"
+                      class="swiper h-full overflow-hidden"
+                    >
+                      <template x-for="(slide, index) in slides" :key="index">
+                        <div class="swiper-slide">
+                          <img
+                            :src="slide.image"
+                            :alt="slide.headline"
+                            class="absolute inset-0 w-full h-full object-cover object-top"
+                          />
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+
+                  <!-- Indicators -->
+                  <div class="mt-20 sm:hidden">
+                    <div class="flex items-center gap-8">
+                      <template x-for="(slide, index) in slides" :key="index">
+                        <button
+                          @click="goToSlide(index)"
+                          class="h-3 w-full transition-all duration-300"
+                          :class="activeIndex === index ? 'bg-secondary' : 'bg-white'"
+                          :aria-label="`Go to slide ${index + 1}`"
+                        ></button>
+                      </template>
+                    </div>
+
+                    <!-- Counter -->
+                    <div class="mt-16">
+                      <span
+                        class="text-secondary font-semibold"
+                        x-text="String(activeIndex + 1).padStart(2, '0')"
+                      ></span>
+                      /
+                      <span
+                        x-text="String(slides.length).padStart(2, '0')"
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Navigation -->
+                <div class="absolute right-0 bottom-0 z-20 hidden sm:flex">
+                  <button
+                    class="hero-prev h-70 lg:h-100 w-70 lg:w-100 bg-primary/90 text-white transition-slow hover:bg-primary hover:text-secondary flex items-center justify-center border-r-2 border-white/10"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M15 6l-6 6l6 6" />
+                    </svg>
+                  </button>
+
+                  <button
+                    class="hero-next h-70 lg:h-100 w-70 lg:w-100 bg-primary/90 text-white transition-slow hover:bg-primary hover:text-secondary flex items-center justify-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M9 6l6 6l-6 6" />
+                    </svg>
+                  </button>
+                </div>
               </div>
-            </div>
-            <!-- Button -->
-            <div class="hidden xl:flex absolute right-0 bottom-0">
-              <button
-                class="h-100 w-100 bg-primary/90 text-white transition-slow hover:bg-primary hover:text-secondary flex items-center justify-center border-r-2 border-white/10"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M15 6l-6 6l6 6" />
-                </svg>
-              </button>
-              <button
-                class="h-100 w-100 bg-primary/90 text-white transition-slow hover:bg-primary hover:text-secondary flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M9 6l6 6l-6 6" />
-                </svg>
-              </button>
             </div>
           </div>
         </div>
@@ -1584,16 +1642,16 @@
         <div class="">
           <div class="CTA element">
             <div
-              class=" max-w-1200 mx-auto bg-primary text-white relative overflow-hidden"
+              class="max-w-1200 mx-auto bg-primary text-white relative overflow-hidden"
             >
-              <div class="py-47 lg:flex items-center justify-between w-full container">
-                <div
-                  class="lg:w-3/4 free_text max-w-650 not-lg:container"
-                >
-                  <h2 class="text-40">
+              <div
+                class="py-40 lg:py-47 lg:flex items-center justify-between w-full container"
+              >
+                <div class="lg:w-3/4 free_text max-w-650 not-lg:container">
+                  <h2 class="text-32 lg:text-40">
                     Dein Vorhaben könnte die nächste Case Study sein.
                   </h2>
-                  <p class="font-Literata">
+                  <p class="font-Literata lg:text-20">
                     Bringen wir Komplexität in Bewegung.
                   </p>
                 </div>
@@ -1623,7 +1681,7 @@
               <img src="assets/icons/Logo.svg" alt="" />
             </div>
             <div class="row cols_1_1 gap-y-70 pb-55">
-              <div class="col">
+              <div class="flex flex-col gap-40 lg:gap-46">
                 <div>
                   <p class="highlight-text hidden md:block">
                     Tensoris GmbH & Co. KG

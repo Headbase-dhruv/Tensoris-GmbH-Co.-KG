@@ -13,8 +13,10 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
     <script defer src="assets/js/alpine.js"></script>
+    <script defer src="assets/js/swiper-bundle.min.js"></script>
 
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/swiper.css" />
 
     <title>Tensoris</title>
   </head>
@@ -87,16 +89,16 @@
 
                 <!-- Mega Menu -->
                 <div
-  x-show="open"
-  x-cloak
-  x-transition:enter="transition ease-out duration-400"
-  x-transition:enter-start="opacity-0 -translate-y-8 scale-[0.98]"
-  x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-  x-transition:leave="transition ease-in duration-250"
-  x-transition:leave-start="opacity-100 translate-y-0 scale-100"
-  x-transition:leave-end="opacity-0 -translate-y-4 scale-[0.98]"
-  class="fixed left-0 w-full z-50 transform-gpu origin-top"
->
+                  x-show="open"
+                  x-cloak
+                  x-transition:enter="transition ease-out duration-400"
+                  x-transition:enter-start="opacity-0 -translate-y-8 scale-[0.98]"
+                  x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                  x-transition:leave="transition ease-in duration-250"
+                  x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                  x-transition:leave-end="opacity-0 -translate-y-4 scale-[0.98]"
+                  class="fixed left-0 w-full z-50 transform-gpu origin-top"
+                >
                   <div
                     class="w-full flex justify-center bg-primary/95 text-white"
                   >
@@ -851,36 +853,48 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </header>
 
     <main>
-      <section class="">
-        <div class="Header relative h-screen max-h-800 py-sec hidden sm:block">
-          <img
-            src="assets/images/Header.webp"
-            alt=""
-            class="absolute inset-0 w-full h-full object-cover"
-          />
+      <section>
+        <div x-data="HeroSlider()" class="swiper heroSwiper">
+          <div class="swiper-wrapper">
+            <template x-for="(slide, index) in slides" :key="index">
+              <div class="swiper-slide">
+                <div class="relative h-screen max-h-800 py-sec hidden sm:block">
+                  <img
+                    :src="slide.image"
+                    :alt="slide.title"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
 
-          <div
-            class="container text-white relative z-10 flex items-end h-full pb-20"
-          >
-            <div class="col">
-              <div class="free_text max-w-440">
-                <h1>Lorem ipsum dolor sit amet.</h1>
-                <h3>
-                  At vero eos et accusam et justo duo dolores et ea rebum stet
-                  clita kasd.
-                </h3>
+                  <div
+                    class="container text-white relative z-10 flex items-end h-full pb-20"
+                  >
+                    <div class="col">
+                      <div class="free_text max-w-440">
+                        <h1>Lorem ipsum dolor sit amet.</h1>
+                        <h3>
+                          At vero eos et accusam et justo duo dolores et ea
+                          rebum stet clita kasd.
+                        </h3>
+                      </div>
+
+                      <div class="flex flex-col md:flex-row gap-12 md:gap-24">
+                        <button class="btn btn-primary">
+                          Primärer Absprung
+                        </button>
+                        <button class="btn btn-secondary">
+                          Sekundärer Absprung
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="flex flex-col md:flex-row gap-12 md:gap-24">
-                <button class="btn btn-primary">Primärer Absprung</button>
-                <button class="btn btn-secondary">Sekundärer Absprung</button>
-              </div>
-            </div>
+            </template>
           </div>
         </div>
         <div class="sm:hidden container py-sec">
@@ -1207,148 +1221,209 @@
       </section>
 
       <!--------------- Work ---------------->
-      <section>
-        <div class="Image-Slide hidden 2xl:block">
+      <section class="ctm_sec">
+        <div class="category Slider">
           <div
-            class="relative xl:h-720 max-w-1920 py-sec overflow-hidden mx-auto"
+            class="text-white bg-primary sm:bg-transparent mx-auto max-w-1920"
           >
-            <!-- saider-image -->
-            <div class="hidden xl:block xl:absolute inset-0">
-              <img
-                src="assets/images/tensoris.webp"
-                alt=""
-                class="w-full h-full object-cover object-top"
-              />
-            </div>
-            <!-- Back  -->
-            <div
-              class="xl:absolute inset-0 bg-white/90 border-r-8 container max-w-1920 xl:px-62 xl:mx-0 row xl:gap-0 border"
-              style="clip-path: polygon(0 0, 40% 0, 35% 100%, 0% 100%)"
-            >
-              <!-- contente  -->
-              <div class="xl:absolute inset-0 h-full w-full md:px-62 py-72">
-                <div class="free_text xl:max-w-370">
+            <div class="container sm:px-0 sm:mx-0 max-w-1920">
+              <div
+                x-data="heroSlider()"
+                class="py-40 sm:py-0 relative flex flex-col gap-60"
+              >
+                <!-- contant text -->
+                <div
+                  class="sm:absolute left-0 top-0 z-10 h-full sm:w-[50%] lg:w-[40%] bg-primary/90 text-white sm:[clip-path:polygon(0_0,100%_0,85%_100%,0%_100%)]"
+                >
                   <div
-                    class="title flex items-center text-center md:text-start gap-8"
+                    class="h-full flex flex-col sm:px-40 lg:px-50 xl:px-62 sm:py-50 lg:py-72"
                   >
-                    <img
-                      src="./assets/icons/Title_icon.svg"
-                      alt=""
-                      class="w-4 h-15 shrink-0"
-                    />
-                    <span>Category</span>
+                    <div
+                      class="free_text not-md:free_text_center sm:max-w-410 transition-slow"
+                      :class="textVisible ? 'opacity-100' : 'opacity-0'"
+                    >
+                      <div class="title flex items-center gap-8">
+                        <img
+                          src="./assets/icons/Title_icon.svg"
+                          alt=""
+                          class="w-4 h-15 shrink-0"
+                        />
+                        <span>Category</span>
+                      </div>
+
+                      <h2 x-text="currentSlide.headline"></h2>
+                      <h3 x-text="currentSlide.subtitle"></h3>
+
+                      <button class="btn btn-primary mt-12 sm:mt-32">
+                        Primärer Absprung
+                      </button>
+                    </div>
                   </div>
-                  <h2>Headline vero eos et accusamus et iusto.</h2>
-                  <h3>
-                    Subtitle at vero eos et accusamus et iusto odio dignissimos
-                    ducimus qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et. Subtitle at vero eos et accusamus
-                    et iusto odio dignissimos ducimus qui blanditiis praesentium
-                    voluptatum deleniti atque corrupti quos.
-                  </h3>
                 </div>
-                <button class="btn btn-primary md:mt-50">
-                  Primärer Absprung
-                </button>
+                <!-- Image -->
+                <div>
+                  <div
+                    x-ref="swiperEl"
+                    class="relative h-550 sm:h-520 lg:h-600 xl:h-720"
+                  >
+                    <div
+                      class="swiper-wrapper"
+                      class="swiper h-full overflow-hidden"
+                    >
+                      <template x-for="(slide, index) in slides" :key="index">
+                        <div class="swiper-slide">
+                          <img
+                            :src="slide.image"
+                            :alt="slide.headline"
+                            class="absolute inset-0 w-full h-full object-cover object-top"
+                          />
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+
+                  <!-- Indicators -->
+                  <div class="mt-20 sm:hidden">
+                    <div class="flex items-center gap-8">
+                      <template x-for="(slide, index) in slides" :key="index">
+                        <button
+                          @click="goToSlide(index)"
+                          class="h-3 w-full transition-all duration-300"
+                          :class="activeIndex === index ? 'bg-secondary' : 'bg-white'"
+                          :aria-label="`Go to slide ${index + 1}`"
+                        ></button>
+                      </template>
+                    </div>
+
+                    <!-- Counter -->
+                    <div class="mt-16">
+                      <span
+                        class="text-secondary font-semibold"
+                        x-text="String(activeIndex + 1).padStart(2, '0')"
+                      ></span>
+                      /
+                      <span
+                        x-text="String(slides.length).padStart(2, '0')"
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Navigation -->
+                <div class="absolute right-0 bottom-0 z-20 hidden sm:flex">
+                  <button
+                    class="hero-prev h-70 lg:h-100 w-70 lg:w-100 bg-primary/90 text-white transition-slow hover:bg-primary hover:text-secondary flex items-center justify-center border-r-2 border-white/10"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M15 6l-6 6l6 6" />
+                    </svg>
+                  </button>
+
+                  <button
+                    class="hero-next h-70 lg:h-100 w-70 lg:w-100 bg-primary/90 text-white transition-slow hover:bg-primary hover:text-secondary flex items-center justify-center"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M9 6l6 6l-6 6" />
+                    </svg>
+                  </button>
+                </div>
               </div>
-            </div>
-            <!-- Button -->
-            <div class="hidden xl:flex absolute right-0 bottom-0">
-              <button
-                class="h-100 w-100 bg-primary/90 text-white transition-slow hover:bg-primary hover:text-secondary flex items-center justify-center border-r-2 border-white/10"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M15 6l-6 6l6 6" />
-                </svg>
-              </button>
-              <button
-                class="h-100 w-100 bg-primary/90 text-white transition-slow hover:bg-primary hover:text-secondary flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M9 6l6 6l-6 6" />
-                </svg>
-              </button>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Now Work -->
-      <section>
+      <section class="my-sec">
         <div class="">
           <div class="CTA element">
             <div
-              class="py-47 lg:flex items-center w-full max-w-1200 mx-auto border"
+              class="max-w-1200 mx-auto bg-primary text-white relative overflow-hidden"
             >
-              <div class="lg:w-3/4 ms-sec free_text max-w-650">
-                <h2 class="text-40">
-                  Dein Vorhaben könnte die nächste Case Study sein.
-                </h2>
-                <p class="font-Literata">
-                  Bringen wir Komplexität in Bewegung.
-                </p>
-              </div>
+              <div
+                class="py-47 lg:flex items-center justify-between w-full container"
+              >
+                <div class="lg:w-3/4 free_text max-w-650 not-lg:container">
+                  <h2 class="text-40">
+                    Dein Vorhaben könnte die nächste Case Study sein.
+                  </h2>
+                  <p class="font-Literata">
+                    Bringen wir Komplexität in Bewegung.
+                  </p>
+                </div>
 
-              <div class="w-1/4 relative flex items-center justify-center">
                 <div
-                  class="absolute inset-0 bg-white xl:image-slant-left"
-                ></div>
-
-                <button class="btn btn-primary relative z-10">
-                  Erstgespräch vereinbaren
-                </button>
+                  class="lg:w-1/4 relative flex lg:items-center lg:justify-center items-start not-lg:container"
+                >
+                  <button class="btn btn-primary relative z-10 not-lg:mt-38">
+                    Erstgespräch vereinbaren
+                  </button>
+                </div>
               </div>
+              <div
+                class="glow -right-600 -top-900 h-1155 w-1468 hidden md:block"
+              ></div>
             </div>
           </div>
         </div>
       </section>
       <!-- Using grid -->
-      <section>
-        <div class="CTA element">
-          <div
-            class="flex flex-col md:flex-row w-full justify-between max-w-1200 mx-auto border overflow-hidden"
-          >
-            <div class="w-full md:w-2/3 py-47 xl:ms-sec free_text max-w-650">
-              <h2 class="text-40">
-                Dein Vorhaben könnte die nächste Case Study sein.
-              </h2>
-
-              <button class="btn btn-primary">Erstgespräch vereinbaren</button>
-            </div>
-
+      <section class="mb-sec">
+        <div class="">
+          <div class="CTA element">
             <div
-              class="relative flex-1 w-full md:w-1/3 min-h-200 md:min-h-auto"
+              class="max-w-1200 mx-auto not-lg:bg-primary text-white relative overflow-hidden not-lg:py-40"
             >
               <div
-                class="absolute inset-0 bg-white -right-0.5 xl:image-slant-left z-10 pointer-events-none"
+                class="container lg:bg-primary lg:pr-0 flex flex-col lg:flex-row gap-y-32"
+              >
+                <div class="w-full md:w-2/3 lg:py-47 free_text max-w-650">
+                  <h2 class="text-40">
+                    Dein Vorhaben könnte die nächste Case Study sein.
+                  </h2>
+
+                  <button class="btn btn-primary">
+                    Erstgespräch vereinbaren
+                  </button>
+                </div>
+
+                <div
+                  class="relative flex-1 w-full lg:w-1/3 min-h-200 lg:min-h-auto"
+                >
+                  <div
+                    class="absolute inset-0 lg:bg-primary -right-0.5 lg:image-slant-left z-10 pointer-events-none"
+                  ></div>
+                  <img
+                    src="assets/images/tensoris.webp"
+                    alt=""
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div
+                class="glow -left-735 -top-280 h-1155 w-1468 hidden md:block"
               ></div>
-              <img
-                src="assets/images/tensoris.webp"
-                alt=""
-                class="absolute inset-0 w-full h-full object-cover"
-              />
             </div>
           </div>
         </div>
