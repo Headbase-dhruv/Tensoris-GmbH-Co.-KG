@@ -401,6 +401,9 @@
   .mr-20 {
     margin-right: calc(var(--spacing) * 20);
   }
+  .mr-auto {
+    margin-right: auto;
+  }
   .mb-8 {
     margin-bottom: calc(var(--spacing) * 8);
   }
@@ -553,9 +556,6 @@
   .h-\[24px\] {
     height: 24px;
   }
-  .h-fit {
-    height: fit-content;
-  }
   .h-full {
     height: 100%;
   }
@@ -570,21 +570,6 @@
   }
   .max-h-800 {
     max-height: calc(var(--spacing) * 800);
-  }
-  .max-h-\[0\%\] {
-    max-height: 0%;
-  }
-  .max-h-\[50\%\] {
-    max-height: 50%;
-  }
-  .max-h-\[90\%\] {
-    max-height: 90%;
-  }
-  .max-h-\[90\] {
-    max-height: 90;
-  }
-  .max-h-fit {
-    max-height: fit-content;
   }
   .min-h-160 {
     min-height: calc(var(--spacing) * 160);
@@ -631,8 +616,17 @@
   .w-1468 {
     width: calc(var(--spacing) * 1468);
   }
+  .w-\[20\%\] {
+    width: 20%;
+  }
   .w-\[26px\] {
     width: 26px;
+  }
+  .w-\[50\%\] {
+    width: 50%;
+  }
+  .w-\[50\] {
+    width: 50;
   }
   .w-\[85\%\] {
     width: 85%;
@@ -1129,6 +1123,15 @@
   .py-65 {
     padding-block: calc(var(--spacing) * 65);
   }
+  .py-115 {
+    padding-block: calc(var(--spacing) * 115);
+  }
+  .py-\[clamp\(3\.75rem\,2\.474rem\+5\.238vw\,7\.1875rem\)\] {
+    padding-block: clamp(3.75rem, 2.474rem + 5.238vw, 7.1875rem);
+  }
+  .py-\[clamp\(4\.6875rem\,4\.0502rem\+2\.6144vw\,7\.1875rem\)\] {
+    padding-block: clamp(4.6875rem, 4.0502rem + 2.6144vw, 7.1875rem);
+  }
   .py-sec {
     padding-block: var(--spacing-sec);
   }
@@ -1383,6 +1386,18 @@
     }
   }
   @media not (width >= 992px) {
+    .not-lg\:-right-30 {
+      right: calc(var(--spacing) * -30);
+    }
+    .not-lg\:-right-50 {
+      right: calc(var(--spacing) * -50);
+    }
+    .not-lg\:right-11 {
+      right: calc(var(--spacing) * 11);
+    }
+    .not-lg\:right-30 {
+      right: calc(var(--spacing) * 30);
+    }
     .not-lg\:container {
       width: 100%;
     }
@@ -1684,6 +1699,9 @@
     .lg\:w-\[40\%\] {
       width: 40%;
     }
+    .lg\:max-w-390 {
+      max-width: calc(var(--spacing) * 390);
+    }
     .lg\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -1842,9 +1860,6 @@
     }
     .\32 xl\:gap-x-90 {
       column-gap: calc(var(--spacing) * 90);
-    }
-    .\32 xl\:gap-x-100 {
-      column-gap: calc(var(--spacing) * 100);
     }
   }
 }
@@ -2067,6 +2082,7 @@
   }
   .glow {
     position: absolute;
+    z-index: 0;
     border-radius: 9999px;
     background: radial-gradient( circle, rgba(var(--secondary-rgb, 140, 255, 0), 0.3) 0%, rgba(var(--secondary-rgb, 140, 255, 0), 0) 70% );
     filter: blur(64px);
