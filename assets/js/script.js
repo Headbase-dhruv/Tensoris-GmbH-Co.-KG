@@ -257,7 +257,8 @@ document.addEventListener("alpine:init", () => {
       this.$nextTick(() => {
         this.swiper = new Swiper(this.$refs.swiperEl, {
           loop: this.slides.length > 1,
-          effect: "fade",
+          // effect: "fade",
+          speed: 1500,
           autoplay: {
             delay: 3000, // wait 3 seconds between slides
             disableOnInteraction: false,
