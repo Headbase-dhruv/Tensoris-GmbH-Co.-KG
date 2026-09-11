@@ -1198,7 +1198,7 @@
           <div
             class="text-white bg-primary sm:bg-transparent mx-auto max-w-1920"
           >
-            <div class="container sm:px-0 sm:mx-0 max-w-1920">
+            <div class="container sm:px-0 sm:mx-0 max-w-1920 ">
               <div
                 x-data="heroSlider()"
                 class="py-40 sm:py-0 relative flex flex-col gap-60"
@@ -1236,14 +1236,14 @@
                 <div>
                   <div
                     x-ref="swiperEl"
-                    class="relative h-500 sm:h-520 lg:h-600 xl:h-720"
+                    class="relative h-500 sm:h-520 lg:h-600 xl:h-720 overflow-x-hidden"
                   >
                     <div
                       class="swiper-wrapper"
                       class="swiper h-full overflow-hidden"
                     >
                       <template x-for="(slide, index) in slides" :key="index">
-                        <div class="swiper-slide">
+                        <div class="swiper-slide ">
                           <img
                             :src="slide.image"
                             :alt="slide.headline"
